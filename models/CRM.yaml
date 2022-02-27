@@ -1,0 +1,26 @@
+title: CRM
+type: object
+x-tags:
+  - persons
+description: List of useful contacts
+properties:
+  id:
+    type: string
+  firstName:
+    type: string
+  lastName:
+    type: string
+  patronym:
+    type: string
+  position:
+    type: string
+  email:
+    type: string
+  phone:
+    type: string
+  link:
+    type: string
+  leads:
+    type: array
+    items:
+      $ref: ./Lead.yaml
