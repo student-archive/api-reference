@@ -1,0 +1,22 @@
+title: Tutor
+type: object
+x-tags:
+  - persons
+description: 'University employee, who teachs students'
+properties:
+  id:
+    type: string
+  firstName:
+    type: string
+  lastName:
+    type: string
+  patronym:
+    type: string
+  email:
+    type: string
+  phone:
+    type: string
+  link:
+    type: string
+  subjects:
+    type: string
