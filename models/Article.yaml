@@ -1,12 +1,10 @@
 title: Article
 type: object
+description: ''
 properties:
   id:
     type: string
   linkConference:
     type: string
   metodicalMaterial:
-    type: string
-description: |-
-  Articles - material for preparing for writing a scientific work.
-  Attributes: links to additional materials, links to conferences.
+    $ref: ./MetodicalMaterial.yaml

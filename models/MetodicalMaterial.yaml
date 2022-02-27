@@ -1,14 +1,14 @@
 title: MetodicalMaterial
 type: object
+description: |-
+  Methodological material - teaching aids on the subject.
+  Attributes: links, type, groups, objects, additional materials.
 properties:
   id:
     type: string
   tupe:
-    type: string
+    $ref: ./MetodicalMaterialsType.yaml
   subject:
     type: string
   link:
     type: string
-description: |-
-  Methodological material - teaching aids on the subject.
-  Attributes: links, type, groups, objects, additional materials.

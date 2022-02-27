@@ -1,9 +1,9 @@
 title: MetodicalMaterialsType
 type: object
+description: |+
+
 properties:
   id:
     type: string
   typeName:
-    type: string
-description: |+
-
+    $ref: ./MetodicalMaterial.yaml
