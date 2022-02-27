@@ -1,0 +1,5 @@
+title: article
+type: object
+properties:
+  id:
+    type: string
