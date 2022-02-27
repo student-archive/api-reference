@@ -1,0 +1,12 @@
+title: QuizVarint
+type: object
+x-tags:
+  - test
+properties:
+  id:
+    type: string
+  quizVariantText:
+    type: string
+  isCorrect:
+    type: boolean
+description: the components of the question

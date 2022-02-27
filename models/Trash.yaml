@@ -1,0 +1,12 @@
+title: Trash
+type: object
+description: temporary storage of deleted pages
+properties:
+  id:
+    type: string
+  deletedId:
+    type: string
+  deleteDate:
+    type: integer
+  group:
+    type: string

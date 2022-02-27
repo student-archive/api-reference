@@ -1,0 +1,13 @@
+title: Quiz
+type: object
+description: a way to check the knowledge of students
+x-internal: false
+x-tags:
+  - test
+properties:
+  id:
+    type: string
+  subject:
+    type: string
+  questions:
+    $ref: ./Question.yaml

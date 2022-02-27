@@ -1,0 +1,16 @@
+title: Event
+type: object
+x-tags:
+  - events
+description: system notification
+properties:
+  id:
+    type: string
+  eventDate:
+    type: integer
+  eventPriority:
+    $ref: ./EventPriority.yaml
+  eventText:
+    type: string
+  group:
+    type: string
