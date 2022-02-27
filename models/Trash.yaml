@@ -7,6 +7,6 @@ properties:
   deletedId:
     type: string
   deleteDate:
-    type: string
+    type: integer
   group:
     type: string
