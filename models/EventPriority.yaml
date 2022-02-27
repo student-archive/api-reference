@@ -1,0 +1,12 @@
+title: EventPriority
+type: object
+x-tags:
+  - event
+properties:
+  id:
+    type: string
+  priority:
+    type: string
+  description:
+    type: string
+description: the level of access (system-wide and local per group) and the importance of the event.
