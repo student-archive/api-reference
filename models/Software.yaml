@@ -1,0 +1,12 @@
+title: Software
+type: object
+properties:
+  id:
+    type: string
+  link:
+    type: string
+  subject:
+    type: string
+description: |-
+  Software - programs necessary for training.
+  Attributes: links, groups, objects.

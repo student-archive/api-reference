@@ -1,0 +1,10 @@
+title: Article
+type: object
+description: ''
+properties:
+  id:
+    type: string
+  linkConference:
+    type: string
+  metodicalMaterial:
+    $ref: ./MetodicalMaterial.yaml
