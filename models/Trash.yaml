@@ -9,4 +9,6 @@ properties:
   deleteDate:
     type: integer
   group:
-    type: string
+    $ref: ./Group.yaml
+x-tags:
+  - content

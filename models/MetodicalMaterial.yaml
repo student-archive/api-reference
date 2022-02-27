@@ -1,14 +1,19 @@
 title: MetodicalMaterial
 type: object
-description: |-
-  Methodological material - teaching aids on the subject.
-  Attributes: links, type, groups, objects, additional materials.
+description: Methodical material - teaching aids on the subject
 properties:
   id:
     type: string
-  tupe:
+  type:
     type: string
   subject:
     type: string
   link:
     type: string
+required:
+  - id
+  - type
+  - subject
+  - link
+x-tags:
+  - content

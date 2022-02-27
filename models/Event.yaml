@@ -2,7 +2,7 @@ title: Event
 type: object
 x-tags:
   - events
-description: system notification
+description: System notification
 properties:
   id:
     type: string
@@ -14,3 +14,8 @@ properties:
     type: string
   group:
     type: string
+required:
+  - id
+  - eventDate
+  - eventPriority
+  - eventText

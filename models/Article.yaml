@@ -1,6 +1,8 @@
 title: Article
 type: object
-description: ''
+description: Materials with useful information about writing scientific articles
+x-tags:
+  - content
 properties:
   id:
     type: string
@@ -8,3 +10,7 @@ properties:
     type: string
   metodicalMaterial:
     $ref: ./MetodicalMaterial.yaml
+required:
+  - id
+  - linkConference
+  - metodicalMaterial

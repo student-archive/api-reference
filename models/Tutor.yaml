@@ -19,4 +19,6 @@ properties:
   link:
     type: string
   subjects:
-    type: string
+    type: array
+    items:
+      $ref: ''

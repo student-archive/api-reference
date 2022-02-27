@@ -2,6 +2,7 @@ title: Group
 type: object
 x-tags:
   - persons
+description: A collection of students
 properties:
   id:
     type: string
@@ -9,4 +10,6 @@ properties:
     type: string
   lead:
     $ref: ./Lead.yaml
-description: ''
+required:
+  - groupNumber
+  - lead

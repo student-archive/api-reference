@@ -2,6 +2,7 @@ title: Student
 type: object
 x-tags:
   - persons
+description: 'Person, who educating in university'
 properties:
   id:
     type: string
@@ -10,7 +11,6 @@ properties:
   lastName:
     type: string
   group:
-    type: string
+    $ref: ./Group.yaml
   role:
-    type: string
-description: 'Person, who educating in university'
+    $ref: ''

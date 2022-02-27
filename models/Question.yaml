@@ -1,8 +1,6 @@
 title: Question
 type: object
-x-tags:
-  - test
-description: the components of the test
+description: The component of the test
 properties:
   id:
     type: string
@@ -10,3 +8,5 @@ properties:
     type: string
   variants:
     $ref: ./QuizVarint.yaml
+x-tags:
+  - tests

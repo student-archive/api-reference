@@ -1,7 +1,5 @@
-title: QuizVarint
+title: QuizVariant
 type: object
-x-tags:
-  - test
 properties:
   id:
     type: string
@@ -9,4 +7,4 @@ properties:
     type: string
   isCorrect:
     type: boolean
-description: the components of the question
+description: Answers of the question

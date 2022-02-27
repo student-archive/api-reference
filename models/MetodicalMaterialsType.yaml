@@ -1,9 +1,12 @@
 title: MetodicalMaterialsType
 type: object
-description: |+
-
+description: 'Type of methodical material (example, solution, etc)'
 properties:
   id:
     type: string
   typeName:
-    $ref: ./MetodicalMaterial.yaml
+    type: string
+required:
+  - typeName
+x-tags:
+  - content

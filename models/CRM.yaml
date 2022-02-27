@@ -24,3 +24,9 @@ properties:
     type: array
     items:
       $ref: ./Lead.yaml
+required:
+  - id
+  - firstName
+  - lastName
+  - position
+  - leads

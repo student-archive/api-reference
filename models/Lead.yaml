@@ -1,10 +1,12 @@
 title: Lead
 type: object
-x-tags:
-  - person
+description: Education profile
 properties:
   id:
     type: string
   name:
     type: string
-description: ''
+required:
+  - name
+x-tags:
+  - persons

@@ -13,3 +13,12 @@ servers:
   - url: 'http://localhost:3000'
 components:
   schemas: {}
+tags:
+  - name: content
+    description: Methodical materials, links, etc 
+  - name: persons
+    description: Authorization information, useful contacts, etc
+  - name: events
+    description: Notification system
+  - name: tests
+    description: Knowledge checking system

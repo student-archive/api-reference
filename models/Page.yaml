@@ -9,6 +9,6 @@ properties:
     type: string
   attachments:
     type: string
-description: |-
-  A page is a place where information is stored.
-  Attributes: group, objects, links, attachments.
+description: A page is a place where information is stored
+x-tags:
+  - content
