@@ -9,3 +9,4 @@ properties:
     type: string
 x-tags:
   - test
+description: the components of the test
