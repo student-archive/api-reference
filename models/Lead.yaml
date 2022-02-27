@@ -1,0 +1,10 @@
+title: Lead
+type: object
+x-tags:
+  - person
+properties:
+  id:
+    type: string
+  name:
+    type: string
+description: ''

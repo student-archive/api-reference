@@ -1,0 +1,16 @@
+title: Student
+type: object
+x-tags:
+  - persons
+properties:
+  id:
+    type: string
+  firstName:
+    type: string
+  lastName:
+    type: string
+  group:
+    type: string
+  role:
+    type: string
+description: 'Person, who educating in university'

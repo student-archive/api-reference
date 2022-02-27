@@ -1,0 +1,12 @@
+title: Group
+type: object
+x-tags:
+  - persons
+properties:
+  id:
+    type: string
+  groupNumber:
+    type: string
+  lead:
+    $ref: ./Lead.yaml
+description: ''
