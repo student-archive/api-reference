@@ -1,0 +1,9 @@
+title: Question
+type: object
+properties:
+  id:
+    type: string
+  questionText:
+    type: string
+  variants:
+    type: string
