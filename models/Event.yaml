@@ -1,0 +1,16 @@
+title: Event
+type: object
+x-tags:
+  - events
+properties:
+  id:
+    type: string
+  eventDate:
+    type: integer
+  eventPriority:
+    type: string
+  eventText:
+    type: string
+  group:
+    type: string
+description: system notification
