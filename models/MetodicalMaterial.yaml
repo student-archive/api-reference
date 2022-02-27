@@ -7,7 +7,7 @@ properties:
   id:
     type: string
   tupe:
-    $ref: ./MetodicalMaterialsType.yaml
+    type: string
   subject:
     type: string
   link:
