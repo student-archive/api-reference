@@ -1,0 +1,12 @@
+title: Moderator
+type: object
+x-tags:
+  - persons
+properties:
+  id:
+    type: string
+  user:
+    $ref: ./User.yaml
+  email:
+    type: string
+description: Superuser of the system
