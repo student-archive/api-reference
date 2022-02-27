@@ -7,3 +7,5 @@ properties:
     type: string
   variants:
     type: string
+x-tags:
+  - test

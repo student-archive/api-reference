@@ -9,3 +9,5 @@ properties:
     type: string
   questions:
     type: string
+x-tags:
+  - test
