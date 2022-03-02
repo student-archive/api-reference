@@ -4,21 +4,88 @@ info:
   description: API Reference for student's knowledge base
   license:
     name: MIT
-    url: https://mit-license.org/
-  contact: 
+    url: 'https://mit-license.org/'
+  contact:
     name: Daniil
-    url: https://t.me/dadyarri
+    url: 'https://t.me/dadyarri'
   version: '1.0'
 servers:
   - url: 'http://localhost:3000'
 components:
   schemas: {}
+  securitySchemes:
+    APIKey:
+      name: API Key
+      type: apiKey
+      in: header
 tags:
   - name: content
-    description: Methodical materials, links, etc 
+    description: 'Methodical materials, links, etc'
   - name: persons
-    description: Authorization information, useful contacts, etc
+    description: 'Authorization information, useful contacts, etc'
   - name: events
     description: Notification system
   - name: tests
     description: Knowledge checking system
+paths:
+  /inviteCode:
+    post:
+      summary: Generate invite code
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/InviteCode.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-inviteCode
+      description: Generates new invite code and returns it
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth token
+    delete:
+      summary: Invalidate invite code
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/InviteCode.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: delete-inviteCode
+      description: Invalidates invite code
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/InvalidateCodeBody.yaml
+        description: ''

@@ -1,0 +1,9 @@
+title: Error
+type: object
+x-tags:
+  - internal
+properties:
+  errorCode:
+    type: string
+  errorDescription:
+    type: string

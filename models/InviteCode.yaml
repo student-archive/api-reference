@@ -14,3 +14,7 @@ properties:
     type: boolean
   activatedDate:
     type: integer
+required:
+  - id
+  - inviteCode
+  - isValid
