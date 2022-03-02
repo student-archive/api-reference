@@ -2,14 +2,14 @@ title: Quiz
 type: object
 description: a way to check the knowledge of students
 x-internal: false
+x-tags:
+  - tests
 properties:
   id:
     type: string
   subject:
-    type: string
+    $ref: ./Subject.yaml
   questions:
     type: array
     items:
       $ref: ./Question.yaml
-x-tags:
-  - tests

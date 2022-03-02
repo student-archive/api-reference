@@ -1,14 +1,16 @@
 title: Page
 type: object
+description: A page is a place where information is stored
+x-tags:
+  - content
 properties:
   id:
     type: string
   subject:
     type: string
+  attachments:
+    type: array
+    items:
+      $ref: ./Attachment.yaml
   link:
     type: string
-  attachments:
-    type: string
-description: A page is a place where information is stored
-x-tags:
-  - content

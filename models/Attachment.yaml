@@ -1,19 +1,16 @@
 title: Attachment
 type: object
 description: Attachments - file management system
+x-tags:
+  - content
 properties:
   id:
     type: string
   type:
-    type: string
-  subject:
     type: string
   link:
     type: string
 required:
   - id
   - type
-  - subject
   - link
-x-tags:
-  - content

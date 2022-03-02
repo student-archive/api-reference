@@ -2,11 +2,9 @@ title: Moderator
 type: object
 x-tags:
   - persons
+description: Superuser of the system
 properties:
   id:
     type: string
   user:
     $ref: ./User.yaml
-  email:
-    type: string
-description: Superuser of the system

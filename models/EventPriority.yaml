@@ -1,15 +1,15 @@
 title: EventPriority
 type: object
 description: The level of access (system-wide and local per group) and the importance of the event
+x-tags:
+  - events
 properties:
   id:
     type: string
-  priority:
+  priorityName:
     type: string
-  description:
+  priorityDescription:
     type: string
 required:
   - id
-  - priority
-x-tags:
-  - events
+  - priorityName

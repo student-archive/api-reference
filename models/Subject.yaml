@@ -2,7 +2,17 @@ title: Subject
 type: object
 x-tags:
   - content
+description: ''
 properties:
   id:
     type: string
-description: ''
+  group:
+    $ref: ./Group.yaml
+  tutors:
+    type: array
+    items:
+      $ref: ./Tutor.yaml
+  subjectName:
+    type: string
+  semester:
+    type: integer

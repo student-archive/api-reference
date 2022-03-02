@@ -6,10 +6,10 @@ description: A collection of students
 properties:
   id:
     type: string
+  speciality:
+    $ref: ./Speciality.yaml
   groupNumber:
     type: string
-  lead:
-    $ref: ./Lead.yaml
 required:
+  - speciality
   - groupNumber
-  - lead

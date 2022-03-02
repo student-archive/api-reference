@@ -2,7 +2,15 @@ title: InviteCode
 type: object
 x-tags:
   - persons
+description: Unique one-time code to add new users
 properties:
   id:
     type: string
-description: Unique one-time code to add new users
+  user:
+    $ref: ./User.yaml
+  inviteCode:
+    type: string
+  isValid:
+    type: boolean
+  activatedDate:
+    type: integer

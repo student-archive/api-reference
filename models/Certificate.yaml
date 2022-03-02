@@ -1,6 +1,14 @@
 title: Certificate
 type: object
+description: 'Information about getting documents - person, location, etc'
 properties:
   id:
     type: string
-description: 'Information about getting documents - person, location, etc'
+  employee:
+    $ref: ./Employee.yaml
+  certificateName:
+    type: string
+  certificateDescription:
+    type: string
+  office:
+    type: string

@@ -5,3 +5,8 @@ x-tags:
 properties:
   id:
     type: string
+  roleName:
+    type: string
+  roleDescription:
+    type: string
+description: Role of Student

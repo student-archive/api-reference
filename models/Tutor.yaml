@@ -21,4 +21,4 @@ properties:
   subjects:
     type: array
     items:
-      $ref: ''
+      $ref: ./Subject.yaml

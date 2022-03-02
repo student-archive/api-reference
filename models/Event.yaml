@@ -6,16 +6,18 @@ description: System notification
 properties:
   id:
     type: string
-  eventDate:
-    type: integer
   eventPriority:
     $ref: ./EventPriority.yaml
+  group:
+    $ref: ./Group.yaml
   eventText:
     type: string
-  group:
+  eventDescription:
     type: string
+  eventDate:
+    type: integer
 required:
   - id
-  - eventDate
   - eventPriority
   - eventText
+  - eventDate

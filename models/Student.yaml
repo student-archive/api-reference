@@ -6,11 +6,13 @@ description: 'Person, who educating in university'
 properties:
   id:
     type: string
+  user:
+    $ref: ./User.yaml
+  group:
+    $ref: ./Group.yaml
+  role:
+    $ref: ./Role.yaml
   firstName:
     type: string
   lastName:
     type: string
-  group:
-    $ref: ./Group.yaml
-  role:
-    $ref: ''

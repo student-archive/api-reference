@@ -6,7 +6,7 @@ x-tags:
 properties:
   id:
     type: string
-  speciality_name:
+  specialityName:
     type: string
 required:
-  - speciality_name
+  - specialityName
