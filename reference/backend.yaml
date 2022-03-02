@@ -89,3 +89,98 @@ paths:
             schema:
               $ref: ../models/InvalidateCodeBody.yaml
         description: ''
+  '/events/{group}':
+    get:
+      summary: Get events
+      tags:
+        - events
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Event.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-event
+      description: Get events of group
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth token
+    post:
+      summary: Create event
+      tags:
+        - events
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Event.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-event
+      description: create event
+      security:
+        - APIKey: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                priority:
+                  $ref: ../models/EventPriority.yaml
+                eventText:
+                  type: string
+                eventDescription:
+                  type: string
+                eventDate:
+                  type: integer
+        description: ''
+    parameters:
+      - schema:
+          type: string
+        name: group
+        in: path
+        required: true
+        description: group id
