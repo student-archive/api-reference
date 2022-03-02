@@ -100,7 +100,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/Event.yaml
+                type: array
+                items:
+                  $ref: ../models/Event.yaml
         '401':
           description: Unauthorized
           content:
@@ -184,3 +186,109 @@ paths:
         in: path
         required: true
         description: group id
+  '/pages/{subject}':
+    post:
+      summary: Create new page
+      tags:
+        - content
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Page.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-pages
+      description: Create new pages and return it
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth Token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attachments:
+                  type: array
+                  items:
+                    $ref: ../models/Attachment.yaml
+                link:
+                  type: string
+    get:
+      summary: Get pages by subject
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Subject.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-pages
+      description: Get list of pages by subject
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth Token
+    parameters:
+      - schema:
+          type: string
+        name: subject
+        in: path
+        required: true
+        description: Subject id
