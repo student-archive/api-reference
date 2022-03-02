@@ -8,3 +8,5 @@ properties:
   isCorrect:
     type: boolean
 description: Answers of the question
+x-tags:
+  - tests

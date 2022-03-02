@@ -9,4 +9,6 @@ properties:
   questionText:
     type: string
   variants:
-    $ref: ./QuizVariant.yaml
+    type: array
+    items:
+      $ref: ./QuizVariant.yaml
