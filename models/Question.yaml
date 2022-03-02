@@ -1,12 +1,12 @@
 title: Question
 type: object
 description: The component of the test
+x-tags:
+  - tests
 properties:
   id:
     type: string
   questionText:
     type: string
   variants:
-    $ref: ./QuizVarint.yaml
-x-tags:
-  - tests
+    $ref: ./QuizVariant.yaml

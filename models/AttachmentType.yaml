@@ -1,6 +1,6 @@
-title: MetodicalMaterialsType
+title: AttachmentType
 type: object
-description: 'Type of methodical material (example, solution, etc)'
+description: 'Type of attachment (example, solution, etc)'
 properties:
   id:
     type: string

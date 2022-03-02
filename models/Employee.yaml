@@ -1,4 +1,4 @@
-title: CRM
+title: Employee
 type: object
 x-tags:
   - persons
@@ -6,6 +6,10 @@ description: List of useful contacts
 properties:
   id:
     type: string
+  specialities:
+    type: array
+    items:
+      $ref: ./Speciality.yaml
   firstName:
     type: string
   lastName:
@@ -20,13 +24,9 @@ properties:
     type: string
   link:
     type: string
-  leads:
-    type: array
-    items:
-      $ref: ./Lead.yaml
 required:
   - id
+  - specialities
   - firstName
   - lastName
   - position
-  - leads

@@ -1,0 +1,7 @@
+title: Role
+type: object
+x-tags:
+  - persons
+properties:
+  id:
+    type: string

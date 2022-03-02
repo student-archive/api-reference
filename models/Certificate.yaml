@@ -1,0 +1,6 @@
+title: Certificate
+type: object
+properties:
+  id:
+    type: string
+description: 'Information about getting documents - person, location, etc'

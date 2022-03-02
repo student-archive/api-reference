@@ -1,6 +1,6 @@
-title: MetodicalMaterial
+title: Attachment
 type: object
-description: Methodical material - teaching aids on the subject
+description: Attachments - file management system
 properties:
   id:
     type: string

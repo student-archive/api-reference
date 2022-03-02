@@ -1,0 +1,8 @@
+title: Subject
+type: object
+x-tags:
+  - content
+properties:
+  id:
+    type: string
+description: ''

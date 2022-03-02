@@ -1,0 +1,8 @@
+title: InviteCode
+type: object
+x-tags:
+  - persons
+properties:
+  id:
+    type: string
+description: Unique one-time code to add new users
