@@ -292,3 +292,264 @@ paths:
         in: path
         required: true
         description: Subject id
+  /eventPriorities:
+    get:
+      summary: get list of priorities
+      tags:
+        - events
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/EventPriority.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-eventPriorities
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth token
+  '/event/{id}':
+    get:
+      summary: Get event by its id
+      tags:
+        - events
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Event.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: ' X-Authorization'
+          description: Auth noken
+    delete:
+      summary: Delete event by its id
+      tags:
+        - events
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: delete
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: ' X-Authorization'
+          description: Auth token
+    patch:
+      summary: Update event by its id
+      tags:
+        - events
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Event.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: patch
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: ' X-Authorization'
+          description: Auth token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                eventPriority:
+                  type: string
+                eventText:
+                  type: string
+                eventDescription:
+                  type: string
+                eventDate:
+                  type: integer
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: uuid of event
+  /quizzes:
+    get:
+      summary: Get list of quizzes
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Quiz.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-quizzes
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: ' X-Authorization'
+          description: Auth token
+    post:
+      summary: Crete new quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Quiz.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-quizzes
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: ' X-Authorization'
+          description: Auth token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subjectId:
+                  type: string
+        description: ''
