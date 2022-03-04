@@ -553,3 +553,156 @@ paths:
                 subjectId:
                   type: string
         description: ''
+  / new soft:
+    post:
+      summary: new soft
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Software.yaml
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Software.yaml
+        '302':
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '425':
+          description: Too Early
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-new-soft
+      description: Create new soft link
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth Token
+  /new attachment:
+    post:
+      summary: create new attachment
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Attachment.yaml
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Attachment.yaml
+        '302':
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '':
+                    $ref: ../models/Error.yaml
+        '425':
+          description: Too Early
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-new-attachment
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth Token
+      description: create new attacment file
+  /new employee:
+    post:
+      summary: create new employ
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Employee.yaml
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Employee.yaml
+        '302':
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '425':
+          description: Too Early
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-new-employee
+      description: create new employ
+      security:
+        - APIKey: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Authorization
+          description: Auth Token
