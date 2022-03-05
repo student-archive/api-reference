@@ -14,7 +14,7 @@ servers:
 components:
   schemas: {}
   securitySchemes:
-    APIKey:
+    Authorization:
       name: API Key
       type: apiKey
       in: header
@@ -49,7 +49,7 @@ paths:
       operationId: post-inviteCode
       description: Generates new invite code and returns it
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -76,7 +76,7 @@ paths:
       operationId: delete-inviteCode
       description: Invalidates invite code
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -124,7 +124,7 @@ paths:
       operationId: get-event
       description: Get events of group
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -163,7 +163,7 @@ paths:
       operationId: post-event
       description: create event
       security:
-        - APIKey: []
+        - Authorization: []
       requestBody:
         content:
           application/json:
@@ -225,7 +225,7 @@ paths:
       operationId: post-pages
       description: Create new pages and return it
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -278,7 +278,7 @@ paths:
       operationId: get-pages
       description: Get list of pages by subject
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -706,3 +706,5 @@ paths:
           in: header
           name: X-Authorization
           description: Auth Token
+security:
+  - Authorization: []
