@@ -15,7 +15,7 @@ components:
   schemas: {}
   securitySchemes:
     Authorization:
-      name: API Key
+      name: Authorization
       type: apiKey
       in: header
 tags:
