@@ -1,3 +1,3 @@
 # Star API
 
-API reference for (https://github.com/student-archive/backend)[student-archive/backend]
+API reference for [student-archive/backend](https://github.com/student-archive/backend)
