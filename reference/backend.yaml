@@ -471,7 +471,7 @@ paths:
         - Authorization: []
       parameters: []
     post:
-      summary: Crete new quiz
+      summary: Create new quiz
       description: creates new quiz for the exact group
       tags:
         - tests
