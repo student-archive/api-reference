@@ -50,12 +50,7 @@ paths:
       description: Generates new invite code and returns it
       security:
         - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth token
+      parameters: []
     delete:
       summary: Invalidate invite code
       tags:
@@ -77,12 +72,7 @@ paths:
       description: Invalidates invite code
       security:
         - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth Token
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -125,12 +115,7 @@ paths:
       description: Get events of group
       security:
         - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth token
+      parameters: []
     post:
       summary: Create event
       tags:
@@ -279,12 +264,7 @@ paths:
       description: Get list of pages by subject
       security:
         - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth Token
+      parameters: []
     parameters:
       - schema:
           type: string
@@ -297,6 +277,7 @@ paths:
       summary: get list of priorities
       tags:
         - events
+      description: gets list of available priorities
       responses:
         '200':
           description: OK
@@ -319,17 +300,13 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-eventPriorities
+      parameters: []
       security:
-        - APIKey: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth token
+        - Authorization: []
   '/event/{id}':
     get:
       summary: Get event by its id
+      description: gets exact event by its id
       tags:
         - events
       responses:
@@ -359,15 +336,11 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get
       security:
-        - APIKey: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: ' X-Authorization'
-          description: Auth noken
+        - Authorization: []
+      parameters: []
     delete:
       summary: Delete event by its id
+      description: deletes exact event by its id
       tags:
         - events
       responses:
@@ -393,7 +366,7 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: delete
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -402,6 +375,7 @@ paths:
           description: Auth token
     patch:
       summary: Update event by its id
+      description: updates exact event by its id
       tags:
         - events
       responses:
@@ -431,7 +405,7 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: patch
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -462,6 +436,7 @@ paths:
   /quizzes:
     get:
       summary: Get list of quizzes
+      description: gets list of created quizzes in exact group
       tags:
         - tests
       responses:
@@ -493,15 +468,11 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get-quizzes
       security:
-        - APIKey: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: ' X-Authorization'
-          description: Auth token
+        - Authorization: []
+      parameters: []
     post:
       summary: Crete new quiz
+      description: creates new quiz for the exact group
       tags:
         - tests
       responses:
@@ -537,7 +508,7 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-quizzes
       security:
-        - APIKey: []
+        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -596,13 +567,8 @@ paths:
       operationId: post-new-soft
       description: Create new soft link
       security:
-        - APIKey: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth Token
+        - Authorization: []
+      parameters: []
   /new attachment:
     post:
       summary: create new attachment
@@ -648,13 +614,8 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-new-attachment
       security:
-        - APIKey: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth Token
+        - Authorization: []
+      parameters: []
       description: create new attacment file
   /new employee:
     post:
@@ -699,12 +660,7 @@ paths:
       operationId: post-new-employee
       description: create new employ
       security:
-        - APIKey: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth Token
+        - Authorization: []
+      parameters: []
 security:
   - Authorization: []
