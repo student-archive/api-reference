@@ -650,20 +650,22 @@ paths:
       description: Get all attachments in subject by its ID
       tags:
         - content
-  /new employee:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attachmentType:
+                  type: string
+                link:
+                  type: string
+  '/employees/{specialtyId}':
     post:
-      summary: create new employ
+      summary: Create new employee
       tags:
         - content
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Employee.yaml
         '201':
           description: Created
           content:
@@ -672,8 +674,20 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Employee.yaml
-        '302':
-          description: Found
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -684,14 +698,45 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-        '425':
-          description: Too Early
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
       operationId: post-new-employee
-      description: create new employ
+      description: Creates new employee
       parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                patronym:
+                  type: string
+                position:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                link:
+                  type: string
+              required:
+                - firstName
+                - lastName
+                - position
+    parameters:
+      - schema:
+          type: string
+        name: specialtyId
+        in: path
+        required: true
+        description: ID of specialty
+    get:
+      summary: Get all employees in a specialty
+      operationId: get-employees
+      responses:
+        '200':
+          description: OK
 security:
   - Authorization: []
