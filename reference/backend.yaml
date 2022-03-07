@@ -48,8 +48,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-inviteCode
       description: Generates new invite code and returns it
-      security:
-        - Authorization: []
       parameters: []
     delete:
       summary: Invalidate invite code
@@ -70,8 +68,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: delete-inviteCode
       description: Invalidates invite code
-      security:
-        - Authorization: []
       parameters: []
       requestBody:
         content:
@@ -113,8 +109,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get-event
       description: Get events of group
-      security:
-        - Authorization: []
       parameters: []
     post:
       summary: Create event
@@ -147,8 +141,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-event
       description: create event
-      security:
-        - Authorization: []
       requestBody:
         content:
           application/json:
@@ -209,8 +201,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-pages
       description: Create new pages and return it
-      security:
-        - Authorization: []
       parameters:
         - schema:
             type: string
@@ -262,8 +252,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get-pages
       description: Get list of pages by subject
-      security:
-        - Authorization: []
       parameters: []
     parameters:
       - schema:
@@ -301,8 +289,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get-eventPriorities
       parameters: []
-      security:
-        - Authorization: []
   '/event/{id}':
     get:
       summary: Get event by its id
@@ -335,8 +321,6 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get
-      security:
-        - Authorization: []
       parameters: []
     delete:
       summary: Delete event by its id
@@ -365,14 +349,7 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: delete
-      security:
-        - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: ' X-Authorization'
-          description: Auth token
+      parameters: []
     patch:
       summary: Update event by its id
       description: updates exact event by its id
@@ -404,14 +381,7 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: patch
-      security:
-        - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: ' X-Authorization'
-          description: Auth token
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -467,8 +437,6 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-quizzes
-      security:
-        - Authorization: []
       parameters: []
     post:
       summary: Create new quiz
@@ -635,8 +603,6 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-new-attachment
-      security:
-        - Authorization: []
       parameters: []
       description: create new attacment file
   /new employee:
@@ -681,8 +647,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-new-employee
       description: create new employ
-      security:
-        - Authorization: []
       parameters: []
 security:
   - Authorization: []
