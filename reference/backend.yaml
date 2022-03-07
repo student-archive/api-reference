@@ -554,25 +554,27 @@ paths:
         description: ID of subject
     get:
       summary: Get list of created softwares in the subject
-      operationId: get-softwares-subjectId
+      operationId: get-softwares
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
       description: Gets list of created softwares in the exact subject by its ID
+      tags:
+        - content
   /new attachment:
     post:
-      summary: create new attachment
+      summary: Create new attachment in the subject
       tags:
         - content
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Attachment.yaml
         '201':
           description: Created
           content:
@@ -581,8 +583,20 @@ paths:
                 type: array
                 items:
                   $ref: ../models/Attachment.yaml
-        '302':
-          description: Found
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -596,15 +610,9 @@ paths:
                 properties:
                   '':
                     $ref: ../models/Error.yaml
-        '425':
-          description: Too Early
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
       operationId: post-new-attachment
       parameters: []
-      description: create new attacment file
+      description: 'Create new attachment in the exact subject by its ID '
   /new employee:
     post:
       summary: create new employ
