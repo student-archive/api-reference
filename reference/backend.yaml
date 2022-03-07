@@ -584,6 +584,13 @@ paths:
         in: path
         required: true
         description: ID of subject
+    get:
+      summary: Get list of created softwares in the subject
+      operationId: get-softwares-subjectId
+      responses:
+        '200':
+          description: OK
+      description: Gets list of created softwares in the exact subject by its ID
   /new attachment:
     post:
       summary: create new attachment
