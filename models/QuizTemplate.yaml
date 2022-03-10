@@ -1,5 +1,0 @@
-title: QuizTemplate
-type: object
-properties:
-  id:
-    type: string
