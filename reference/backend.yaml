@@ -175,12 +175,6 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Page.yaml
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
         '401':
           description: Unauthorized
           content:
@@ -201,12 +195,7 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-pages
       description: Create new pages and return it
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: X-Authorization
-          description: Auth Token
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -475,7 +464,14 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-quizzes
-      parameters: []
+      security:
+        - Authorization: []
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: ' X-Authorization'
+          description: Auth token
       requestBody:
         content:
           application/json:
@@ -525,8 +521,6 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-software
       description: Create new software link in a subject by its ID
-      security:
-        - Authorization: []
       parameters: []
       requestBody:
         content:
@@ -549,16 +543,30 @@ paths:
       summary: Get list of created softwares in the subject
       operationId: get-softwares
       responses:
-        '201':
-          description: Created
-        '400':
-          description: Bad Request
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Software.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       description: Gets list of created softwares in the exact subject by its ID
       tags:
         - content
@@ -664,15 +672,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: ../models/Employee.yaml
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
+                $ref: ../models/Employee.yaml
         '401':
           description: Unauthorized
           content:
@@ -731,6 +731,109 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Employee.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      description: Get all employees in a specialty
+  '/сertificates/{employee}':
+    parameters:
+      - schema:
+          type: string
+        name: employee
+        in: path
+        required: true
+        description: Id of employee
+    post:
+      summary: Create new certificate
+      tags:
+        - content
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Certificate.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-ertificates-employee
+      description: Create new certificate
+    get:
+      summary: Get list of certificates by employee
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Certificate.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-ertificates-employee
+      description: Get list of certificates by employee
       description: Get all employees in a specialty
       tags:
         - content
