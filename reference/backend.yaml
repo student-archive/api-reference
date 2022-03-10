@@ -1030,7 +1030,7 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get-quiz-quiz_id-question-question_id
       description: Get exact question
-  '/trash{id}':
+  '/trash/{id}':
     parameters:
       - schema:
           type: string
@@ -1052,7 +1052,7 @@ paths:
                 properties:
                   id:
                     type: string
-                  deletedContene:
+                  deletedContent:
                     anyOf:
                       - $ref: ../models/Attachment.yaml
                       - $ref: ../models/Page.yaml
@@ -1078,27 +1078,68 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-        '':
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
       operationId: get-trasch-id
       description: Get information about deleted content
-    post:
-      summary: Delete content to trash
-      tags:
-        - content
-      responses: {}
-      operationId: post-trasch-id
-      description: Delete content to trash
     delete:
       summary: Restore content from trash
       tags:
         - content
-      responses: {}
-      operationId: delete-trasch-id
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: delete-trash-id
       description: Restore content from trash
+  /trash:
+    post:
+      summary: Delete element to trash
+      tags:
+        - content
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Trash.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-trash
+      description: Deletes element to trash
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                elementId:
+                  type: string
 security:
   - Authorization: []
