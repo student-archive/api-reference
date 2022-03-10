@@ -847,5 +847,77 @@ paths:
                 description:
                   type: string
       description: Update quiz
+  '/quiz/{id}/questions':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of quiz
+    get:
+      summary: Get a list of questions in the quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Question.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-quiz-id-questions
+      description: ' Get a list of questions in the quiz '
+    post:
+      summary: Create new question
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Question.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-quiz-id-questions
+      description: Create new question
 security:
   - Authorization: []
