@@ -1030,5 +1030,75 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: get-quiz-quiz_id-question-question_id
       description: Get exact question
+  '/trash{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of deleted content
+    get:
+      summary: Get information about deleted content
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  deletedContene:
+                    anyOf:
+                      - $ref: ../models/Attachment.yaml
+                      - $ref: ../models/Page.yaml
+                      - $ref: ../models/Software.yaml
+                      - $ref: ../models/Quiz.yaml
+                      - $ref: ../models/Question.yaml
+                      - $ref: ../models/QuizVariant.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-trasch-id
+      description: Get information about deleted content
+    post:
+      summary: Delete content to trash
+      tags:
+        - content
+      responses: {}
+      operationId: post-trasch-id
+      description: Delete content to trash
+    delete:
+      summary: Restore content from trash
+      tags:
+        - content
+      responses: {}
+      operationId: delete-trasch-id
+      description: Restore content from trash
 security:
   - Authorization: []
