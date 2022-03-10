@@ -475,14 +475,7 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-quizzes
-      security:
-        - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: ' X-Authorization'
-          description: Auth token
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -738,5 +731,121 @@ paths:
       responses:
         '200':
           description: OK
+      description: Get all employees in a specialty
+      tags:
+        - content
+  '/quiz/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of quiz
+    get:
+      summary: Get exact quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Quiz.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-quiz-id
+      description: Get exact quiz
+    delete:
+      summary: Delete quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: delete-quiz-id
+      description: Delete quiz
+    patch:
+      summary: Update quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Quiz.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: patch-quiz-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quizName:
+                  type: string
+                description:
+                  type: string
+      description: Update quiz
 security:
   - Authorization: []
