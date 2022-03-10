@@ -2,13 +2,17 @@ title: User
 type: object
 x-tags:
   - persons
+description: 'Person, who educating in university'
 properties:
   id:
     type: string
-  username:
+  account:
+    $ref: ./User.yaml
+  group:
+    $ref: ./Group.yaml
+  role:
+    $ref: ./Role.yaml
+  firstName:
     type: string
-  passwordHash:
+  lastName:
     type: string
-  lastLoginDate:
-    type: integer
-description: Authentication information about users

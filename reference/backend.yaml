@@ -475,14 +475,7 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-quizzes
-      security:
-        - Authorization: []
-      parameters:
-        - schema:
-            type: string
-          in: header
-          name: ' X-Authorization'
-          description: Auth token
+      parameters: []
       requestBody:
         content:
           application/json:
@@ -738,5 +731,374 @@ paths:
       responses:
         '200':
           description: OK
+      description: Get all employees in a specialty
+      tags:
+        - content
+  '/quiz/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of quiz
+    get:
+      summary: Get exact quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Quiz.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-quiz-id
+      description: Get exact quiz
+    delete:
+      summary: Delete quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: delete-quiz-id
+      description: Delete quiz
+    patch:
+      summary: Update quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Quiz.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: patch-quiz-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quizName:
+                  type: string
+                description:
+                  type: string
+      description: Update quiz
+  '/quiz/{id}/questions':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of quiz
+    get:
+      summary: Get a list of questions in the quiz
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Question.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-quiz-id-questions
+      description: ' Get a list of questions in the quiz '
+    post:
+      summary: Create new question
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Question.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-quiz-id-questions
+      description: Create new question
+  '/question/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of question
+    patch:
+      summary: Change question
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Question.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: patch-quiz-quiz_id-question-question_id
+      description: Change question
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                questionText:
+                  type: string
+          application/xml:
+            schema:
+              type: object
+              properties:
+                quizText:
+                  type: string
+    delete:
+      summary: Delete question
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: delete-quiz-quiz_id-question-question_id
+      description: Delete question
+    get:
+      summary: Get exact question
+      tags:
+        - tests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Question.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-quiz-quiz_id-question-question_id
+      description: Get exact question
+  '/trash{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: id of deleted content
+    get:
+      summary: Get information about deleted content
+      tags:
+        - content
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  deletedContene:
+                    anyOf:
+                      - $ref: ../models/Attachment.yaml
+                      - $ref: ../models/Page.yaml
+                      - $ref: ../models/Software.yaml
+                      - $ref: ../models/Quiz.yaml
+                      - $ref: ../models/Question.yaml
+                      - $ref: ../models/QuizVariant.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-trasch-id
+      description: Get information about deleted content
+    post:
+      summary: Delete content to trash
+      tags:
+        - content
+      responses: {}
+      operationId: post-trasch-id
+      description: Delete content to trash
+    delete:
+      summary: Restore content from trash
+      tags:
+        - content
+      responses: {}
+      operationId: delete-trasch-id
+      description: Restore content from trash
 security:
   - Authorization: []
