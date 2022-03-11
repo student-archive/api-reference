@@ -1155,5 +1155,101 @@ paths:
           description: Unauthorized
       operationId: get-whoami
       description: Gets username of current user
+  /account:
+    post:
+      summary: Create new account
+      tags:
+        - persons
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.yaml
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-account
+      description: Creates new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password_hash:
+                  type: string
+              required:
+                - username
+                - password_hash
+      security: []
+  '/account/{username}':
+    parameters:
+      - schema:
+          type: string
+        name: username
+        in: path
+        required: true
+    patch:
+      summary: Update user
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: patch-account-username
+      description: Updates user's information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password_hash:
+                  type: string
+                last_active_date:
+                  type: string
+    delete:
+      summary: Delete user
+      tags:
+        - persons
+      responses: {}
+      operationId: delete-account-username
 security:
   - Authorization: []
