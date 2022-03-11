@@ -29,6 +29,32 @@ components:
                 $ref: ../models/Account.yaml
               inviteCode:
                 $ref: ../models/InviteCode.yaml
+    CreateEventBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              priorityId:
+                $ref: ../models/EventPriority.yaml
+              eventText:
+                type: string
+              eventDescritption:
+                type: string
+              eventDate:
+                type: string
+    CreatePageBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              attachments:
+                type: array
+                items:
+                  $ref: ../models/Attachment.yaml
+              link:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -155,20 +181,7 @@ paths:
       operationId: post-event
       description: create event
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                priority:
-                  $ref: ../models/EventPriority.yaml
-                eventText:
-                  type: string
-                eventDescription:
-                  type: string
-                eventDate:
-                  type: integer
-        description: ''
+        $ref: '#/components/requestBodies/CreateEventBody'
     parameters:
       - schema:
           type: string
@@ -216,17 +229,7 @@ paths:
       description: Create new pages and return it
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                attachments:
-                  type: array
-                  items:
-                    $ref: ../models/Attachment.yaml
-                link:
-                  type: string
+        $ref: '#/components/requestBodies/CreatePageBody'
     get:
       summary: Get pages by subject
       tags:
@@ -285,12 +288,6 @@ paths:
                   $ref: ../models/EventPriority.yaml
         '401':
           description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
-        '405':
-          description: Method Not Allowed
           content:
             application/json:
               schema:
@@ -391,19 +388,7 @@ paths:
       operationId: patch
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                eventPriority:
-                  type: string
-                eventText:
-                  type: string
-                eventDescription:
-                  type: string
-                eventDate:
-                  type: integer
+        $ref: '#/components/requestBodies/CreateEventBody'
     parameters:
       - schema:
           type: string
@@ -557,16 +542,38 @@ paths:
       summary: Get list of created softwares in the subject
       operationId: get-softwares
       responses:
-        '201':
-          description: Created
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Software.yaml
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       description: Gets list of created softwares in the exact subject by its ID
       tags:
         - content
@@ -611,6 +618,19 @@ paths:
       operationId: post-new-attachment
       parameters: []
       description: 'Create new attachment in the exact subject by its ID '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attachmentType:
+                  $ref: ../models/AttachmentType.yaml
+                link:
+                  type: string
+              required:
+                - attachmentType
+                - link
     parameters:
       - schema:
           type: string
@@ -739,6 +759,30 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Employee.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       description: Get all employees in a specialty
       tags:
         - content
@@ -927,6 +971,19 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-quiz-id-questions
       description: Create new question
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                questionText:
+                  type: string
+                questionDescription:
+                  type: string
+              required:
+                - questionText
+                - questionDescription
   '/question/{id}':
     parameters:
       - schema:
@@ -973,6 +1030,8 @@ paths:
               type: object
               properties:
                 questionText:
+                  type: string
+                questionDescription:
                   type: string
           application/xml:
             schema:
@@ -1097,10 +1156,22 @@ paths:
           description: OK
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-trash-id
       description: Restore content from trash
   /trash:
