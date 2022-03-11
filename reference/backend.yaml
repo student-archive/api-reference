@@ -18,6 +18,17 @@ components:
       name: Authorization
       type: apiKey
       in: header
+  requestBodies:
+    InvalidateCodeBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              account:
+                $ref: ../models/Account.yaml
+              inviteCode:
+                $ref: ../models/InviteCode.yaml
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -66,15 +77,17 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-inviteCode
       description: Invalidates invite code
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/InvalidateCodeBody.yaml
-        description: ''
+        $ref: '#/components/requestBodies/InvalidateCodeBody'
   '/events/{group}':
     get:
       summary: Get events

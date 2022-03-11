@@ -1,9 +1,0 @@
-title: InvalidateCodeBody
-type: object
-x-tags:
-  - internal
-properties:
-  user:
-    $ref: ./User.yaml
-  inviteCode:
-    $ref: ./InviteCode.yaml
