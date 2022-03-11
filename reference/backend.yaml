@@ -1419,5 +1419,57 @@ paths:
           description: Not Found
       operationId: get-user-userId
       description: Gets user by its ID
+  /roles:
+    get:
+      summary: Get list of available roles
+      tags:
+        - persons
+      responses: {}
+      operationId: get-roles
+  /groups:
+    post:
+      summary: Create new group
+      tags:
+        - persons
+      responses: {}
+      operationId: post-groups
+  '/group/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get group by id
+      tags:
+        - persons
+      responses: {}
+      operationId: get-group-id
+    delete:
+      summary: Delete group
+      tags:
+        - persons
+      responses: {}
+      operationId: delete-group-id
+  '/subjects/{groupId}':
+    parameters:
+      - schema:
+          type: string
+        name: groupId
+        in: path
+        required: true
+    get:
+      summary: 'Get list of subjects in group '
+      tags:
+        - persons
+      responses: {}
+      operationId: get-subjects-groupId
+    post:
+      summary: Create new subject in group
+      tags:
+        - persons
+      responses: {}
+      operationId: post-subjects-groupId
 security:
   - Authorization: []
