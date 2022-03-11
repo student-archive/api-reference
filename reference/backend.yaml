@@ -1155,7 +1155,7 @@ paths:
           description: Unauthorized
       operationId: get-whoami
       description: Gets username of current user
-  /account:
+  /accounts:
     post:
       summary: Create new account
       tags:
@@ -1189,6 +1189,7 @@ paths:
                 - username
                 - password_hash
       security: []
+    parameters: []
   '/account/{username}':
     parameters:
       - schema:
@@ -1251,5 +1252,38 @@ paths:
         - persons
       responses: {}
       operationId: delete-account-username
+  /users:
+    post:
+      summary: Create new user
+      tags:
+        - persons
+      responses: {}
+      operationId: post-user
+    parameters: []
+  '/user/{userId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+    patch:
+      summary: Updates user
+      tags:
+        - persons
+      responses: {}
+      operationId: patch-user-userId
+    delete:
+      summary: Deletes user
+      tags:
+        - persons
+      responses: {}
+      operationId: delete-user-userId
+    get:
+      summary: Gets user by user ID
+      tags:
+        - persons
+      responses: {}
+      operationId: get-user-userId
 security:
   - Authorization: []
