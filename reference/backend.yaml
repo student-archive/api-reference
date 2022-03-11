@@ -1257,8 +1257,45 @@ paths:
       summary: Create new user
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/User.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
       operationId: post-user
+      description: Creates new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                accountId:
+                  type: string
+                roleId:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+              required:
+                - groupId
+                - accountId
+                - roleId
+                - firstName
+                - lastName
     parameters: []
   '/user/{userId}':
     parameters:
@@ -1283,7 +1320,20 @@ paths:
       summary: Gets user by user ID
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/User.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
       operationId: get-user-userId
+      description: Gets user by its ID
 security:
   - Authorization: []
