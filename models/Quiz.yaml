@@ -1,6 +1,6 @@
 title: Quiz
 type: object
-description: a way to check the knowledge of students
+description: Collection of questions
 x-internal: false
 x-tags:
   - tests
@@ -13,3 +13,6 @@ properties:
     type: array
     items:
       $ref: ./Question.yaml
+required:
+  - id
+  - subject

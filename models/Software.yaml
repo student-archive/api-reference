@@ -10,3 +10,7 @@ properties:
     $ref: ./Subject.yaml
   link:
     type: string
+required:
+  - id
+  - subject
+  - link

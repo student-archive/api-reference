@@ -2,6 +2,7 @@ title: Role
 type: object
 x-tags:
   - persons
+description: Role of user
 properties:
   id:
     type: string
@@ -9,4 +10,6 @@ properties:
     type: string
   roleDescription:
     type: string
-description: Role of Student
+required:
+  - id
+  - roleName

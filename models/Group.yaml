@@ -11,5 +11,6 @@ properties:
   groupNumber:
     type: string
 required:
+  - id
   - speciality
   - groupNumber

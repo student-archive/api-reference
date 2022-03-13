@@ -1,12 +1,13 @@
 title: AttachmentType
 type: object
 description: 'Type of attachment (example, solution, etc)'
+x-tags:
+  - content
 properties:
   id:
     type: string
   typeName:
     type: string
 required:
+  - id
   - typeName
-x-tags:
-  - content

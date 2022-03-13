@@ -22,3 +22,8 @@ properties:
     type: array
     items:
       $ref: ./Subject.yaml
+required:
+  - id
+  - firstName
+  - lastName
+  - subjects

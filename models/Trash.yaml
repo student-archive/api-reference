@@ -1,6 +1,8 @@
 title: Trash
 type: object
-description: temporary storage of deleted pages
+description: Temporary storage of deleted pages
+x-tags:
+  - content
 properties:
   id:
     type: string
@@ -10,5 +12,8 @@ properties:
     type: integer
   group:
     $ref: ./Group.yaml
-x-tags:
-  - content
+required:
+  - id
+  - deletedId
+  - deleteDate
+  - group

@@ -2,7 +2,7 @@ title: Subject
 type: object
 x-tags:
   - content
-description: ''
+description: Information about training course
 properties:
   id:
     type: string
@@ -16,3 +16,9 @@ properties:
     type: string
   semester:
     type: integer
+required:
+  - id
+  - group
+  - tutors
+  - subjectName
+  - semester

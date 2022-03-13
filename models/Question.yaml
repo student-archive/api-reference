@@ -8,7 +8,13 @@ properties:
     type: string
   questionText:
     type: string
+  questionDescription:
+    type: string
   variants:
     type: array
     items:
       $ref: ./QuizVariant.yaml
+required:
+  - id
+  - questionText
+  - variants

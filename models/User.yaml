@@ -2,12 +2,12 @@ title: User
 type: object
 x-tags:
   - persons
-description: 'Person, who educating in university'
+description: User of the system
 properties:
   id:
     type: string
   account:
-    $ref: ./User.yaml
+    $ref: ./Account.yaml
   group:
     $ref: ./Group.yaml
   role:
@@ -16,3 +16,9 @@ properties:
     type: string
   lastName:
     type: string
+required:
+  - id
+  - account
+  - role
+  - firstName
+  - lastName

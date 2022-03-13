@@ -9,4 +9,5 @@ properties:
   specialityName:
     type: string
 required:
+  - id
   - specialityName

@@ -1,5 +1,8 @@
 title: QuizVariant
 type: object
+description: Answers of the question
+x-tags:
+  - tests
 properties:
   id:
     type: string
@@ -7,6 +10,7 @@ properties:
     type: string
   isCorrect:
     type: boolean
-description: Answers of the question
-x-tags:
-  - tests
+required:
+  - id
+  - quizVariantText
+  - isCorrect

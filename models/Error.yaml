@@ -7,3 +7,7 @@ properties:
     type: string
   errorDescription:
     type: string
+required:
+  - errorCode
+  - errorDescription
+description: Internal model to describe errors in the system

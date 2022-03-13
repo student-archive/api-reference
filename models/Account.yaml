@@ -2,6 +2,7 @@ title: Account
 type: object
 x-tags:
   - persons
+description: Authentication information about users
 properties:
   id:
     type: string
@@ -11,4 +12,7 @@ properties:
     type: string
   lastLoginDate:
     type: integer
-description: Authentication information about users
+required:
+  - id
+  - username
+  - passwordHash
