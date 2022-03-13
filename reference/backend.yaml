@@ -18,6 +18,20 @@ components:
       name: Authorization
       type: apiKey
       in: header
+  requestBodies:
+    CreatePageBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              attachments:
+                type: array
+                items:
+                  $ref: ../models/Attachment.yaml
+              link:
+                type: string
+                pattern: '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$'
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -34,14 +48,20 @@ paths:
       tags:
         - persons
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
           content:
             application/json:
               schema:
                 $ref: ../models/InviteCode.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -82,7 +102,7 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-event
-      description: Get events of group
+      description: Get events of group by its ID
       parameters: []
     post:
       summary: Create event
@@ -137,7 +157,7 @@ paths:
         name: group
         in: path
         required: true
-        description: group id
+        description: ID of group
   '/pages/{subject}':
     post:
       summary: Create new page
@@ -178,17 +198,7 @@ paths:
       description: Create new pages and return it
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                attachments:
-                  type: array
-                  items:
-                    $ref: ../models/Attachment.yaml
-                link:
-                  type: string
+        $ref: '#/components/requestBodies/CreatePageBody'
     get:
       summary: Get pages by subject
       tags:
@@ -221,7 +231,7 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-pages
-      description: Get list of pages by subject
+      description: Get list of pages in subject by its ID
       parameters: []
     parameters:
       - schema:
@@ -229,7 +239,7 @@ paths:
         name: subject
         in: path
         required: true
-        description: Subject id
+        description: ID of subject
   /eventPriorities:
     get:
       summary: get list of priorities

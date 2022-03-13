@@ -4,10 +4,14 @@ description: Temporary storage of deleted pages
 properties:
   id:
     type: string
+    example: 2a1dbd41-b900-4d0a-9180-5fe58e569dc4
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
   deletedId:
     type: string
+    example: 115e1da5-6dfd-41dc-818f-184c59b4714e
   deleteDate:
     type: integer
+    example: 1647159287
   group:
     $ref: ./Group.yaml
 required:

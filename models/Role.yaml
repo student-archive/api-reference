@@ -4,6 +4,8 @@ description: Role of user
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: edfc5608-30b2-4408-bd87-5d0fa260bc4b
   roleName:
     type: string
   roleDescription:

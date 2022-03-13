@@ -4,6 +4,8 @@ description: Answers of the question
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: e13764a2-938a-4bfe-98e4-d6b0de0006ec
   quizVariantText:
     type: string
   isCorrect:

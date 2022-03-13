@@ -4,6 +4,8 @@ description: 'University employee, who teachs students'
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: 8fae1554-9e9c-4ea3-8104-35ad1d97a05c
   firstName:
     type: string
   lastName:
@@ -12,10 +14,13 @@ properties:
     type: string
   email:
     type: string
+    pattern: '^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$'
   phone:
     type: string
+    pattern: '^\+[1-9]\d{1,14}$'
   link:
     type: string
+    pattern: '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$'
   subjects:
     type: array
     items:

@@ -4,6 +4,8 @@ description: 'Type of attachment (example, solution, etc)'
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: 383a40fd-9fdb-467b-a1bb-1b1432fa73e0
   typeName:
     type: string
 required:

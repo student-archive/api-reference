@@ -4,19 +4,20 @@ description: User of the system
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+  firstName:
+    type: string
+  lastName:
+    type: string
   account:
     $ref: ./Account.yaml
   group:
     $ref: ./Group.yaml
   role:
     $ref: ./Role.yaml
-  firstName:
-    type: string
-  lastName:
-    type: string
 required:
   - id
-  - account
-  - role
   - firstName
   - lastName
+  - account
+  - role

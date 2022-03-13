@@ -4,12 +4,17 @@ description: Authentication information about users
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: 99167df3-123e-4d1b-9542-3950c7eeef28
   username:
     type: string
+    pattern: '^[a-z0-9_-]{3,15}$'
+    example: ejik
   passwordHash:
     type: string
   lastLoginDate:
     type: integer
+    example: 1647159287
 required:
   - id
   - username

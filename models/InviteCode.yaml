@@ -4,14 +4,18 @@ description: Unique one-time code to add new users
 properties:
   id:
     type: string
-  user:
-    $ref: ./User.yaml
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: c02221c7-f761-4680-a414-8eb49984e138
+  account:
+    $ref: ./Account.yaml
   inviteCode:
     type: string
   isValid:
     type: boolean
+    default: true
   activatedDate:
     type: integer
+    example: 1647159287
 required:
   - id
   - inviteCode

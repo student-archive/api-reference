@@ -4,10 +4,13 @@ description: Attachments - file management system
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: 2ceacea5-6831-48f0-856a-3551d375fd89
   type:
-    type: string
+    $ref: ./AttachmentType.yaml
   link:
     type: string
+    pattern: '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$'
 required:
   - id
   - type

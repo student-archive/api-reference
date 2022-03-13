@@ -4,19 +4,23 @@ description: Information about training course
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: 0b5f18cd-3907-4fd1-b64f-bd5d44fc5f66
+  subjectName:
+    type: string
+  semester:
+    type: integer
+    minimum: 1
+    example: 3
   group:
     $ref: ./Group.yaml
   tutors:
     type: array
     items:
       $ref: ./Tutor.yaml
-  subjectName:
-    type: string
-  semester:
-    type: integer
 required:
   - id
-  - group
-  - tutors
   - subjectName
   - semester
+  - group
+  - tutors

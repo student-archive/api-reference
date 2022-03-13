@@ -4,6 +4,8 @@ description: System notification
 properties:
   id:
     type: string
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: 5cbf66de-9a4e-4380-beac-2421f9a26cf4
   eventPriority:
     $ref: ./EventPriority.yaml
   group:
@@ -14,6 +16,7 @@ properties:
     type: string
   eventDate:
     type: integer
+    example: 1647159287
 required:
   - id
   - eventPriority

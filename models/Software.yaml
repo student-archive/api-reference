@@ -4,11 +4,14 @@ description: Software - programs necessary for education process
 properties:
   id:
     type: string
-  subject:
-    $ref: ./Subject.yaml
+    pattern: '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$'
+    example: ac29b22b-4338-4edc-8332-a045bc0fc9ce
   link:
     type: string
+    pattern: '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$'
+  subject:
+    $ref: ./Subject.yaml
 required:
   - id
-  - subject
   - link
+  - subject
