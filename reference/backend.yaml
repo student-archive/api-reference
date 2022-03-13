@@ -122,6 +122,18 @@ components:
             properties:
               deletedId:
                 type: string
+    AccountBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              passwordHash:
+                type: string
+              lastActiveDate:
+                type: integer
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -1240,8 +1252,30 @@ paths:
       summary: Create new account
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-accounts
+      description: Creates new account
+      requestBody:
+        $ref: '#/components/requestBodies/AccountBody'
+      security: []
   '/account/{id}':
     parameters:
       - schema:
@@ -1253,19 +1287,90 @@ paths:
       summary: Get exact account
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-account-id
+      description: Gets exact account by its ID
     patch:
       summary: Update account information
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Account.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: patch-account-id
+      requestBody:
+        $ref: '#/components/requestBodies/AccountBody'
     delete:
       summary: Delete account
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-account-id
   /roles:
     get:
