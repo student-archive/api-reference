@@ -638,16 +638,6 @@ paths:
       description: Get all attachments in subject by its ID
       tags:
         - content
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                attachmentType:
-                  type: string
-                link:
-                  type: string
   '/employees/{specialtyId}':
     post:
       summary: Create new employee
