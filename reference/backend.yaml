@@ -32,6 +32,26 @@ components:
               link:
                 type: string
                 pattern: '^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$'
+    EventBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              eventText:
+                type: string
+              eventDescription:
+                type: string
+              eventDate:
+                type: integer
+              eventPriority:
+                $ref: ../models/EventPriority.yaml
+            required:
+              - eventText
+              - eventDescription
+              - eventDate
+              - eventPriority
+      description: Body for POST request to create new event
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -136,21 +156,7 @@ paths:
       operationId: post-event
       description: create event
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                priority:
-                  $ref: ../models/EventPriority.yaml
-                eventText:
-                  type: string
-                eventDescription:
-                  type: string
-                eventDate:
-                  type: integer
-                  example: 1647156461
-        description: ''
+        $ref: '#/components/requestBodies/CreateEventBody'
     parameters:
       - schema:
           type: string
@@ -261,12 +267,6 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-        '405':
-          description: Method Not Allowed
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
       operationId: get-eventPriorities
       parameters: []
   '/event/{id}':
@@ -363,19 +363,7 @@ paths:
       operationId: patch
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                eventPriority:
-                  type: string
-                eventText:
-                  type: string
-                eventDescription:
-                  type: string
-                eventDate:
-                  type: integer
+        $ref: '#/components/requestBodies/EventBody'
     parameters:
       - schema:
           type: string
