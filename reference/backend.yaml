@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: star-api
+  title: Star API
   description: API Reference for student's knowledge base
   license:
     name: MIT
