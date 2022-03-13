@@ -129,6 +129,7 @@ paths:
                   type: string
                 eventDate:
                   type: integer
+                  example: 1647156461
         description: ''
     parameters:
       - schema:
