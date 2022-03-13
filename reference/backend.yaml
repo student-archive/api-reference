@@ -49,32 +49,6 @@ paths:
       operationId: post-inviteCode
       description: Generates new invite code and returns it
       parameters: []
-    delete:
-      summary: Invalidate invite code
-      tags:
-        - persons
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/InviteCode.yaml
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: ../models/Error.yaml
-      operationId: delete-inviteCode
-      description: Invalidates invite code
-      parameters: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: ../models/InvalidateCodeBody.yaml
-        description: ''
   '/events/{group}':
     get:
       summary: Get events
@@ -1145,5 +1119,45 @@ paths:
           description: Unauthorized
       operationId: get-whoami
       description: Gets username of current user
+  '/inviteCode/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    delete:
+      summary: Invalidate an invite code
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: delete-inviteCode-id
+      description: Invalidates invite code by its ID
 security:
   - Authorization: []
