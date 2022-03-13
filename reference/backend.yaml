@@ -134,6 +134,22 @@ components:
                 type: string
               lastActiveDate:
                 type: integer
+    UserBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+              group:
+                $ref: ../models/Group.yaml
+              account:
+                $ref: ../models/Account.yaml
+              role:
+                $ref: ../models/Role.yaml
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -1377,15 +1393,63 @@ paths:
       summary: Get list of available roles
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Role.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-roles
+      description: Gets list of available roles
   /users:
     post:
       summary: Create new user
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/User.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-users
+      description: Creates new user
+      requestBody:
+        $ref: '#/components/requestBodies/UserBody'
   '/user/{id}':
     parameters:
       - schema:
