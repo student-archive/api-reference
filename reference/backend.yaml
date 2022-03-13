@@ -52,16 +52,56 @@ components:
               - eventDate
               - eventPriority
       description: Body for POST request to create new event
-    CreateQuizBody:
+    QuizBody:
       content:
         application/json:
           schema:
             type: object
             properties:
-              subjectId:
+              quizName:
+                type: string
+              quizDescription:
+                type: string
+              subject:
+                $ref: ../models/Subject.yaml
+            required:
+              - quizName
+              - subject
+    CreateAttachmentBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              type:
+                $ref: ../models/AttachmentType.yaml
+              link:
+                type: string
+    CreateEmployeeBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+              patronym:
+                type: string
+              position:
+                type: string
+              phone:
+                type: string
+              email:
+                type: string
+              link:
                 type: string
             required:
-              - subjectId
+              - firstName
+              - lastName
+              - position
+      description: ''
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -455,7 +495,7 @@ paths:
       operationId: post-quizzes
       parameters: []
       requestBody:
-        $ref: '#/components/requestBodies/CreateQuizBody'
+        $ref: '#/components/requestBodies/QuizBody'
     parameters:
       - schema:
           type: string
@@ -527,16 +567,32 @@ paths:
       summary: Get list of created softwares in the subject
       operationId: get-softwares
       responses:
-        '201':
-          description: Created
-        '400':
-          description: Bad Request
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Software.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       description: Gets list of created softwares in the exact subject by its ID
       tags:
         - content
@@ -621,6 +677,8 @@ paths:
       description: Get all attachments in subject by its ID
       tags:
         - content
+      requestBody:
+        $ref: '#/components/requestBodies/CreateAttachmentBody'
   '/employees/{specialtyId}':
     post:
       summary: Create new employee
@@ -663,29 +721,7 @@ paths:
       description: Creates new employee
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                patronym:
-                  type: string
-                position:
-                  type: string
-                email:
-                  type: string
-                phone:
-                  type: string
-                link:
-                  type: string
-              required:
-                - firstName
-                - lastName
-                - position
+        $ref: '#/components/requestBodies/CreateEmployeeBody'
     parameters:
       - schema:
           type: string
@@ -699,6 +735,30 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Employee.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       description: Get all employees in a specialty
       tags:
         - content
@@ -804,17 +864,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: patch-quiz-id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                quizName:
-                  type: string
-                description:
-                  type: string
       description: Update quiz
+      requestBody:
+        $ref: '#/components/requestBodies/QuizBody'
   '/quiz/{id}/questions':
     parameters:
       - schema:
