@@ -1207,6 +1207,7 @@ paths:
         name: id
         in: path
         required: true
+        description: ID of invite code
     delete:
       summary: Invalidate an invite code
       tags:
