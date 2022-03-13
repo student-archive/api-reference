@@ -657,6 +657,8 @@ paths:
       operationId: post-new-attachment
       parameters: []
       description: 'Create new attachment in the exact subject by its ID '
+      requestBody:
+        $ref: '#/components/requestBodies/CreateAttachmentBody'
     parameters:
       - schema:
           type: string
@@ -697,8 +699,6 @@ paths:
       description: Get all attachments in subject by its ID
       tags:
         - content
-      requestBody:
-        $ref: '#/components/requestBodies/CreateAttachmentBody'
   '/employees/{specialtyId}':
     post:
       summary: Create new employee
