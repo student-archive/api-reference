@@ -1,8 +1,6 @@
 title: Speciality
 type: object
 description: Education profile
-x-tags:
-  - persons
 properties:
   id:
     type: string

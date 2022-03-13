@@ -1,7 +1,5 @@
 title: Event
 type: object
-x-tags:
-  - events
 description: System notification
 properties:
   id:

@@ -1,8 +1,6 @@
 title: Certificate
 type: object
 description: 'Information about getting documents - person, location, etc'
-x-tags:
-  - content
 properties:
   id:
     type: string

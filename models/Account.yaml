@@ -1,7 +1,5 @@
 title: Account
 type: object
-x-tags:
-  - persons
 description: Authentication information about users
 properties:
   id:

@@ -1,7 +1,5 @@
 title: User
 type: object
-x-tags:
-  - persons
 description: User of the system
 properties:
   id:

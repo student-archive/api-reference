@@ -1,7 +1,5 @@
 title: Role
 type: object
-x-tags:
-  - persons
 description: Role of user
 properties:
   id:

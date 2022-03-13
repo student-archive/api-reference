@@ -1,8 +1,6 @@
 title: AttachmentType
 type: object
 description: 'Type of attachment (example, solution, etc)'
-x-tags:
-  - content
 properties:
   id:
     type: string

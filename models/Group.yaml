@@ -1,7 +1,5 @@
 title: Group
 type: object
-x-tags:
-  - persons
 description: A collection of students
 properties:
   id:

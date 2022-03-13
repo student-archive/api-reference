@@ -2,8 +2,6 @@ title: Quiz
 type: object
 description: Collection of questions
 x-internal: false
-x-tags:
-  - tests
 properties:
   id:
     type: string

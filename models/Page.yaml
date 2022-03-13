@@ -1,8 +1,6 @@
 title: Page
 type: object
 description: A page is a place where information is stored
-x-tags:
-  - content
 properties:
   id:
     type: string

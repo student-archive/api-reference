@@ -1,8 +1,6 @@
 title: Trash
 type: object
 description: Temporary storage of deleted pages
-x-tags:
-  - content
 properties:
   id:
     type: string

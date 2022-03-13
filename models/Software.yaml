@@ -1,8 +1,6 @@
 title: Software
 type: object
 description: Software - programs necessary for education process
-x-tags:
-  - content
 properties:
   id:
     type: string
