@@ -52,6 +52,16 @@ components:
               - eventDate
               - eventPriority
       description: Body for POST request to create new event
+    CreateQuizBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              subjectId:
+                type: string
+            required:
+              - subjectId
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -156,7 +166,7 @@ paths:
       operationId: post-event
       description: create event
       requestBody:
-        $ref: '#/components/requestBodies/CreateEventBody'
+        $ref: '#/components/requestBodies/EventBody'
     parameters:
       - schema:
           type: string
@@ -272,7 +282,7 @@ paths:
   '/event/{id}':
     get:
       summary: Get event by its id
-      description: gets exact event by its id
+      description: Gets exact event by its id
       tags:
         - events
       responses:
@@ -304,7 +314,7 @@ paths:
       parameters: []
     delete:
       summary: Delete event by its id
-      description: deletes exact event by its id
+      description: Deletes exact event by its id
       tags:
         - events
       responses:
@@ -328,11 +338,11 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-      operationId: delete
+      operationId: delete-event
       parameters: []
     patch:
       summary: Update event by its id
-      description: updates exact event by its id
+      description: Updates exact event by its id
       tags:
         - events
       responses:
@@ -360,7 +370,7 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-      operationId: patch
+      operationId: patch-event
       parameters: []
       requestBody:
         $ref: '#/components/requestBodies/EventBody'
@@ -371,10 +381,10 @@ paths:
         in: path
         required: true
         description: uuid of event
-  /quizzes:
+  '/quizzes/{groupId}':
     get:
       summary: Get list of quizzes
-      description: gets list of created quizzes in exact group
+      description: Gets list of created quizzes in exact group
       tags:
         - tests
       responses:
@@ -408,7 +418,7 @@ paths:
       parameters: []
     post:
       summary: Create new quiz
-      description: creates new quiz for the exact group
+      description: Creates new quiz for the exact group
       tags:
         - tests
       responses:
@@ -445,14 +455,14 @@ paths:
       operationId: post-quizzes
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                subjectId:
-                  type: string
-        description: ''
+        $ref: '#/components/requestBodies/CreateQuizBody'
+    parameters:
+      - schema:
+          type: string
+        name: groupId
+        in: path
+        required: true
+        description: ID of group
   '/softwares/{subjectId}':
     post:
       summary: Create new software link in a subject by its ID
