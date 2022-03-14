@@ -1996,7 +1996,6 @@ paths:
       operationId: post-accounts-login
       description: |-
         Authenticates user
-
         Access level: No auth
       security: []
       requestBody:
