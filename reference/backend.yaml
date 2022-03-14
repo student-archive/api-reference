@@ -192,6 +192,24 @@ components:
             properties:
               specialityName:
                 type: string
+    TutorBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+              patronym:
+                type: string
+              email:
+                type: string
+              phone:
+                type: string
+              link:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -2084,7 +2102,13 @@ paths:
       summary: Get exact speciality
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Speciality.yaml
       operationId: get-speciality-id
       description: |-
         Gets exact speciality by its ID
@@ -2093,16 +2117,44 @@ paths:
       summary: Update speciality
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Speciality.yaml
       operationId: patch-speciality-id
       description: |-
         Updates speciality information
         Access level: Moderators only
+      requestBody:
+        $ref: '#/components/requestBodies/SpecialityBody'
     delete:
       summary: Delete speciality
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-speciality-id
       description: |-
         Deletes speciality
@@ -2118,7 +2170,15 @@ paths:
       summary: Get list of tutors in subject
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Tutor.yaml
       operationId: get-tutors-subjectId
       description: |-
         Gets list of tutors in a subject
@@ -2127,11 +2187,43 @@ paths:
       summary: Create new tutor for subject
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Tutor.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-tutors-subjectId
       description: |-
         Creates new tutor for subject
         Access level: Captains+
+      requestBody:
+        $ref: '#/components/requestBodies/TeacherBody'
   '/tutor/{id}':
     parameters:
       - schema:
@@ -2143,7 +2235,31 @@ paths:
       summary: Get exact tutor
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Tutor.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-tutor-id
       description: |-
         Gets exact tutor
@@ -2152,16 +2268,62 @@ paths:
       summary: Update tutor
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Tutor.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: patch-tutor-id
       description: |-
         Updates tutor information
         Access level: Captains+
+      requestBody:
+        $ref: '#/components/requestBodies/TutorBody'
     delete:
       summary: Delete tutor
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-tutor-id
       description: |-
         Deletes tutor
@@ -2183,8 +2345,16 @@ paths:
                     type: string
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-accounts-login
       description: |-
         Authenticates user
