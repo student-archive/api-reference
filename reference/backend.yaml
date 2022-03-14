@@ -160,6 +160,18 @@ components:
                 $ref: ../models/Speciality.yaml
               groupName:
                 type: string
+    LoginBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              passwordHash:
+                type: string
+              scope:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -1962,5 +1974,29 @@ paths:
       description: |-
         Deletes tutor
         Access level: Captains+
+  /accounts/login:
+    post:
+      summary: Authenticate user
+      tags:
+        - persons
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jwt:
+                    type: string
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      operationId: post-accounts-login
+      description: Authenticates user
+      security: []
+      requestBody:
+        $ref: '#/components/requestBodies/LoginBody'
 security:
   - Authorization: []
