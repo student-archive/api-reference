@@ -150,6 +150,16 @@ components:
                 $ref: ../models/Account.yaml
               role:
                 $ref: ../models/Role.yaml
+    GroupBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              speciality:
+                $ref: ../models/Speciality.yaml
+              groupName:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -185,7 +195,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-inviteCode
-      description: Generates new invite code and returns it
+      description: |-
+        Generates new invite code and returns it
+        Access level: Captains+
       parameters: []
   '/events/{group}':
     get:
@@ -220,7 +232,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-event
-      description: Get events of group by its ID
+      description: |-
+        Get events of group by its ID
+        Access level: Captains+
       parameters: []
     post:
       summary: Create event
@@ -252,7 +266,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-event
-      description: create event
+      description: |-
+        Creates event
+        Access level: Captains+
       requestBody:
         $ref: '#/components/requestBodies/EventBody'
     parameters:
@@ -299,7 +315,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-pages
-      description: Create new pages and return it
+      description: |-
+        Create new pages and return it
+        Access level: Captains+
       parameters: []
       requestBody:
         $ref: '#/components/requestBodies/CreatePageBody'
@@ -335,7 +353,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-pages
-      description: Get list of pages in subject by its ID
+      description: |-
+        Get list of pages in subject by its ID
+        Access level: Any user
       parameters: []
     parameters:
       - schema:
@@ -349,7 +369,9 @@ paths:
       summary: get list of priorities
       tags:
         - events
-      description: gets list of available priorities
+      description: |-
+        Gets list of available priorities
+        Access level: Captains+
       responses:
         '200':
           description: OK
@@ -370,7 +392,9 @@ paths:
   '/event/{id}':
     get:
       summary: Get event by its id
-      description: Gets exact event by its id
+      description: |-
+        Gets exact event by its id
+        Access level: Captains+
       tags:
         - events
       responses:
@@ -402,7 +426,9 @@ paths:
       parameters: []
     delete:
       summary: Delete event by its id
-      description: Deletes exact event by its id
+      description: |-
+        Deletes exact event by its id
+        Access level: Captains+
       tags:
         - events
       responses:
@@ -430,7 +456,9 @@ paths:
       parameters: []
     patch:
       summary: Update event by its id
-      description: Updates exact event by its id
+      description: |-
+        Updates exact event by its id
+        Access level: Captains+
       tags:
         - events
       responses:
@@ -472,7 +500,9 @@ paths:
   '/quizzes/{groupId}':
     get:
       summary: Get list of quizzes
-      description: Gets list of created quizzes in exact group
+      description: |-
+        Gets list of created quizzes in exact group
+        Access level: Any user
       tags:
         - tests
       responses:
@@ -506,7 +536,9 @@ paths:
       parameters: []
     post:
       summary: Create new quiz
-      description: Creates new quiz for the exact group
+      description: |-
+        Creates new quiz for the exact group
+        Access level: Captains+
       tags:
         - tests
       responses:
@@ -590,7 +622,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-software
-      description: Create new software link in a subject by its ID
+      description: |-
+        Create new software link in a subject by its ID
+        Access level: Captains+
       security:
         - Authorization: []
       parameters: []
@@ -641,7 +675,9 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-      description: Gets list of created softwares in the exact subject by its ID
+      description: |-
+        Gets list of created softwares in the exact subject by its ID
+        Access level: Any user
       tags:
         - content
   '/attachments/{subjectId}':
@@ -684,7 +720,9 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: post-new-attachment
       parameters: []
-      description: 'Create new attachment in the exact subject by its ID '
+      description: |-
+        Create new attachment in the exact subject by its ID
+        Access level: Captains+
       requestBody:
         $ref: '#/components/requestBodies/CreateAttachmentBody'
     parameters:
@@ -724,7 +762,9 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-      description: Get all attachments in subject by its ID
+      description: |-
+        Get all attachments in subject by its ID
+        Access level: Any user
       tags:
         - content
   '/employees/{specialtyId}':
@@ -766,7 +806,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-new-employee
-      description: Creates new employee
+      description: |-
+        Creates new employee
+        Access level: Captains+
       parameters: []
       requestBody:
         $ref: '#/components/requestBodies/CreateEmployeeBody'
@@ -807,7 +849,9 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Error.yaml
-      description: Get all employees in a specialty
+      description: |-
+        Get all employees in a specialty
+        Access level: Any user
       tags:
         - content
   '/quiz/{id}':
@@ -848,7 +892,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-quiz-id
-      description: Get exact quiz
+      description: |-
+        Get exact quiz
+        Access level: Any user
     delete:
       summary: Delete quiz
       tags:
@@ -875,7 +921,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: delete-quiz-id
-      description: Delete quiz
+      description: |-
+        Delete quiz
+        Access level: Captains+
     patch:
       summary: Update quiz
       tags:
@@ -912,7 +960,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: patch-quiz-id
-      description: Update quiz
+      description: |-
+        Update quiz
+        Access level: Captains+
       requestBody:
         $ref: '#/components/requestBodies/QuizBody'
   '/quiz/{id}/questions':
@@ -955,7 +1005,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-quiz-id-questions
-      description: ' Get a list of questions in the quiz '
+      description: |-
+        Get a list of questions in the quiz
+        Access level: Editors+
     post:
       summary: Create new question
       tags:
@@ -986,7 +1038,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-quiz-id-questions
-      description: Create new question
+      description: |-
+        Create new question
+        Access level: Captains+
       requestBody:
         $ref: '#/components/requestBodies/QuestionBody'
   '/question/{id}':
@@ -1027,7 +1081,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: patch-quiz-quiz_id-question-question_id
-      description: Change question
+      description: |-
+        Change question
+        Access level: Captains only
       requestBody:
         $ref: '#/components/requestBodies/QuestionBody'
     delete:
@@ -1056,7 +1112,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: delete-quiz-quiz_id-question-question_id
-      description: Delete question
+      description: |-
+        Delete question permanently
+        Access level: Captains+
     get:
       summary: Get exact question
       tags:
@@ -1087,7 +1145,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-quiz-quiz_id-question-question_id
-      description: Get exact question
+      description: |-
+        Get exact question
+        Access level: Any user
   '/trash/{id}':
     parameters:
       - schema:
@@ -1137,7 +1197,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-trash-id
-      description: Get information about deleted content
+      description: |-
+        Get information about deleted content
+        Access level: Editors+
     delete:
       summary: Restore content from trash
       tags:
@@ -1164,7 +1226,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: delete-trash-id
-      description: Restore content from trash
+      description: |-
+        Restore content from trash
+        Access level: Captains+
   /trash:
     post:
       summary: Delete element to trash
@@ -1202,7 +1266,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-trash
-      description: Deletes element to trash
+      description: |-
+        Deletes element to trash
+        Access level: Captains only
       requestBody:
         $ref: '#/components/requestBodies/DeleteContentBody'
   /whoami:
@@ -1227,7 +1293,9 @@ paths:
               schema:
                 $ref: ''
       operationId: get-whoami
-      description: Gets username of current user
+      description: |-
+        Gets username of current user
+        Access level: Any user
   '/inviteCode/{id}':
     parameters:
       - schema:
@@ -1262,7 +1330,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: delete-inviteCode-id
-      description: Invalidates invite code by its ID
+      description: |-
+        Invalidates invite code by its ID
+        Access level: Any user
   /accounts:
     post:
       summary: Create new account
@@ -1288,7 +1358,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-accounts
-      description: Creates new account
+      description: |-
+        Creates new account
+        Access level: No auth
       requestBody:
         $ref: '#/components/requestBodies/AccountBody'
       security: []
@@ -1329,7 +1401,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-account-id
-      description: Gets exact account by its ID
+      description: |-
+        Gets exact account by its ID
+        Access level: Any user
     patch:
       summary: Update account information
       tags:
@@ -1362,6 +1436,9 @@ paths:
       operationId: patch-account-id
       requestBody:
         $ref: '#/components/requestBodies/AccountBody'
+      description: |-
+        Updates exact account by its ID
+        Access level: Any user
     delete:
       summary: Delete account
       tags:
@@ -1388,6 +1465,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: delete-account-id
+      description: |-
+        Deletes exact account by its ID
+        Access level: Any user
   /roles:
     get:
       summary: Get list of available roles
@@ -1415,7 +1495,9 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: get-roles
-      description: Gets list of available roles
+      description: |-
+        Gets list of available roles
+        Access level: Captains+
   /users:
     post:
       summary: Create new user
@@ -1447,9 +1529,12 @@ paths:
               schema:
                 $ref: ../models/Error.yaml
       operationId: post-users
-      description: Creates new user
+      description: |-
+        Creates new user
+        Access level: No auth
       requestBody:
         $ref: '#/components/requestBodies/UserBody'
+      security: []
   '/user/{id}':
     parameters:
       - schema:
@@ -1461,27 +1546,141 @@ paths:
       summary: Get exact user
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/User.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-user-id
+      description: |-
+        Gets user model by its ID
+        Access level: Any user
     patch:
       summary: Update user's information
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: patch-user-id
+      requestBody:
+        $ref: '#/components/requestBodies/UserBody'
+      description: |-
+        Updates user information
+        Access level: Any user
   /groups:
     get:
       summary: Get list of groups
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Group.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-groups
+      description: |-
+        Gets list of created groups
+        Access level: Moderators only
     post:
       summary: Create new group
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Group.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-groups
+      description: |-
+        Creates new group
+        Access level: Moderators only
+      requestBody:
+        $ref: '#/components/requestBodies/GroupBody'
   '/group/{id}':
     parameters:
       - schema:
@@ -1493,20 +1692,105 @@ paths:
       summary: Get exact group
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Group.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-group-id
+      description: |-
+        Get exact group by its ID
+        Access level: Any user
     patch:
       summary: Update group information
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Group.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: patch-group-id
+      description: |-
+        Updates group information
+        Access level: Captains+
+      requestBody:
+        $ref: '#/components/requestBodies/GroupBody'
     delete:
       summary: Delete group
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-group-id
+      description: |-
+        Deletes group by ID
+        Access level: Moderators only
   '/subjects/{groupId}':
     parameters:
       - schema:
@@ -1520,12 +1804,18 @@ paths:
         - persons
       responses: {}
       operationId: get-subjects-groupId
+      description: |-
+        Gets list of subject in a group
+        Access level: Any user
     post:
       summary: Create new subject in a group
       tags:
         - persons
       responses: {}
       operationId: post-subjects-groupId
+      description: |-
+        Creates new subject for a group
+        Access level: Captains+
   '/subject/{id}':
     parameters:
       - schema:
@@ -1539,18 +1829,27 @@ paths:
         - persons
       responses: {}
       operationId: get-subject-id
+      description: |-
+        Gets information about subject
+        Access level: Any user
     patch:
       summary: Update exact subject
       tags:
         - persons
       responses: {}
       operationId: patch-subject-id
+      description: |-
+        Updates information about subject
+        Access level: Captains+
     delete:
       summary: Delete exact subject
       tags:
         - persons
       responses: {}
       operationId: delete-subject-id
+      description: |-
+        Deletes subject
+        Access level: Captains+
   /specialities:
     get:
       summary: Get list of specialities
@@ -1558,12 +1857,18 @@ paths:
         - persons
       responses: {}
       operationId: get-specialities
+      description: |-
+        Gets all created specialities
+        Access level: Moderators only
     post:
       summary: Create new speciality
       tags:
         - persons
       responses: {}
       operationId: post-specialities
+      description: |-
+        Creates new speciality
+        Access level: Moderators only
   '/speciality/{id}':
     parameters:
       - schema:
@@ -1577,18 +1882,27 @@ paths:
         - persons
       responses: {}
       operationId: get-speciality-id
+      description: |-
+        Gets exact speciality by its ID
+        Access level: Moderators only
     patch:
       summary: Update speciality
       tags:
         - persons
       responses: {}
       operationId: patch-speciality-id
+      description: |-
+        Updates speciality information
+        Access level: Moderators only
     delete:
       summary: Delete speciality
       tags:
         - persons
       responses: {}
       operationId: delete-speciality-id
+      description: |-
+        Deletes speciality
+        Access level: Moderators only
   '/tutors/{subjectId}':
     parameters:
       - schema:
@@ -1602,12 +1916,18 @@ paths:
         - persons
       responses: {}
       operationId: get-tutors-subjectId
+      description: |-
+        Gets list of tutors in a subject
+        Access level: Any user
     post:
       summary: Create new tutor for subject
       tags:
         - persons
       responses: {}
       operationId: post-tutors-subjectId
+      description: |-
+        Creates new tutor for subject
+        Access level: Captains+
   '/tutor/{id}':
     parameters:
       - schema:
@@ -1621,17 +1941,26 @@ paths:
         - persons
       responses: {}
       operationId: get-tutor-id
+      description: |-
+        Gets exact tutor
+        Access level: Any user
     patch:
       summary: Update tutor
       tags:
         - persons
       responses: {}
       operationId: patch-tutor-id
+      description: |-
+        Updates tutor information
+        Access level: Captains+
     delete:
       summary: Delete tutor
       tags:
         - persons
       responses: {}
       operationId: delete-tutor-id
+      description: |-
+        Deletes tutor
+        Access level: Captains+
 security:
   - Authorization: []
