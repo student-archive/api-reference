@@ -10,7 +10,10 @@ info:
     url: 'https://t.me/dadyarri'
   version: '1.0'
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'http://localhost'
+    description: Localhost
+  - url: 'https://api.star.dev'
+    description: Production
 components:
   schemas: {}
   securitySchemes:
