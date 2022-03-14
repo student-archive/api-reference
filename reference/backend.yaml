@@ -172,6 +172,26 @@ components:
                 type: string
               scope:
                 type: string
+    SubjectBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              subjectName:
+                type: string
+              semester:
+                type: integer
+              group:
+                $ref: ../models/Group.yaml
+    SpecialityBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              specialityName:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -1814,7 +1834,33 @@ paths:
       summary: Get list of subjects in a group
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Subject.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-subjects-groupId
       description: |-
         Gets list of subject in a group
@@ -1823,11 +1869,39 @@ paths:
       summary: Create new subject in a group
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-subjects-groupId
       description: |-
         Creates new subject for a group
         Access level: Captains+
+      requestBody:
+        $ref: '#/components/requestBodies/SubjectBody'
   '/subject/{id}':
     parameters:
       - schema:
@@ -1839,7 +1913,31 @@ paths:
       summary: Get exact subject
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Subject.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-subject-id
       description: |-
         Gets information about subject
@@ -1848,16 +1946,68 @@ paths:
       summary: Update exact subject
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Subject.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: patch-subject-id
       description: |-
         Updates information about subject
         Access level: Captains+
+      requestBody:
+        $ref: '#/components/requestBodies/SubjectBody'
     delete:
       summary: Delete exact subject
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: delete-subject-id
       description: |-
         Deletes subject
@@ -1867,7 +2017,27 @@ paths:
       summary: Get list of specialities
       tags:
         - persons
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Speciality.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: get-specialities
       description: |-
         Gets all created specialities
@@ -1876,11 +2046,33 @@ paths:
       summary: Create new speciality
       tags:
         - persons
-      responses: {}
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
       operationId: post-specialities
       description: |-
         Creates new speciality
         Access level: Moderators only
+      requestBody:
+        $ref: '#/components/requestBodies/SpecialityBody'
   '/speciality/{id}':
     parameters:
       - schema:
