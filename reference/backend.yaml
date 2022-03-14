@@ -1994,7 +1994,10 @@ paths:
         '401':
           description: Unauthorized
       operationId: post-accounts-login
-      description: Authenticates user
+      description: |-
+        Authenticates user
+
+        Access level: No auth
       security: []
       requestBody:
         $ref: '#/components/requestBodies/LoginBody'
