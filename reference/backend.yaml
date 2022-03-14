@@ -2223,7 +2223,7 @@ paths:
         Creates new tutor for subject
         Access level: Captains+
       requestBody:
-        $ref: '#/components/requestBodies/TeacherBody'
+        $ref: '#/components/requestBodies/TutorBody'
   '/tutor/{id}':
     parameters:
       - schema:
