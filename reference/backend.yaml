@@ -239,6 +239,15 @@ components:
                   - $ref: ../models/Software.yaml
                   - $ref: ../models/Question.yaml
                   - $ref: ../models/QuizVariant.yaml
+    Login201Response:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              jwt:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -2341,14 +2350,7 @@ paths:
         - persons
       responses:
         '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jwt:
-                    type: string
+          $ref: '#/components/responses/Login201Response'
         '400':
           description: Bad Request
           content:
