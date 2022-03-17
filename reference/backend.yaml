@@ -248,6 +248,15 @@ components:
             properties:
               jwt:
                 type: string
+    Whoami200Response:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -1343,14 +1352,7 @@ paths:
         - persons
       responses:
         '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  username:
-                    type: string
+          $ref: '#/components/responses/Whoami200Response'
         '401':
           description: Unauthorized
           content:
