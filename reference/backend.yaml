@@ -221,6 +221,24 @@ components:
             properties:
               link:
                 type: string
+  responses:
+    DeletedContent200Response:
+      description: ''
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              deletedContent:
+                anyOf:
+                  - $ref: ../models/Page.yaml
+                  - $ref: ../models/Attachment.yaml
+                  - $ref: ../models/Quiz.yaml
+                  - $ref: ../models/Software.yaml
+                  - $ref: ../models/Question.yaml
+                  - $ref: ../models/QuizVariant.yaml
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -1215,22 +1233,7 @@ paths:
         - content
       responses:
         '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  deletedContent:
-                    anyOf:
-                      - $ref: ../models/Attachment.yaml
-                      - $ref: ../models/Page.yaml
-                      - $ref: ../models/Software.yaml
-                      - $ref: ../models/Quiz.yaml
-                      - $ref: ../models/Question.yaml
-                      - $ref: ../models/QuizVariant.yaml
+          $ref: '#/components/responses/DeletedContent200Response'
         '401':
           description: Unauthorized
           content:
