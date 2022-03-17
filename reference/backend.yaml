@@ -213,6 +213,14 @@ components:
                 type: string
               link:
                 type: string
+    LinkBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              link:
+                type: string
 tags:
   - name: content
     description: 'Methodical materials, links, etc'
@@ -419,7 +427,7 @@ paths:
         description: ID of subject
   /eventPriorities:
     get:
-      summary: get list of priorities
+      summary: Get list of priorities
       tags:
         - events
       description: |-
@@ -682,15 +690,7 @@ paths:
         - Authorization: []
       parameters: []
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                link:
-                  type: string
-              required:
-                - link
+        $ref: '#/components/requestBodies/LinkBody'
     parameters:
       - schema:
           type: string
