@@ -2372,5 +2372,48 @@ paths:
       security: []
       requestBody:
         $ref: '#/components/requestBodies/LoginBody'
+  '/tutors/{subjectId}/{teacherId}':
+    parameters:
+      - schema:
+          type: string
+        name: subjectId
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: teacherId
+        in: path
+        required: true
+    put:
+      summary: Add existing tutor to subject
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Subject.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: put-tutors-subjectId-teacherId
+      description: Adds existing tutor to subject
 security:
   - Authorization: []
