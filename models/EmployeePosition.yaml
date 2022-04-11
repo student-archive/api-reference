@@ -1,0 +1,9 @@
+title: EmployeePosition
+type: object
+properties:
+  id:
+    type: string
+  position:
+    type: string
+  employee:
+    $ref: ./Employee.yaml

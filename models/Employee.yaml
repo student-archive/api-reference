@@ -1,5 +1,7 @@
 title: Employee
 type: object
+x-tags:
+  - persons
 description: List of useful contacts
 properties:
   id:

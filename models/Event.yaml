@@ -1,5 +1,7 @@
 title: Event
 type: object
+x-tags:
+  - events
 description: System notification
 properties:
   id:
@@ -17,6 +19,8 @@ properties:
   eventDate:
     type: integer
     example: 1647159287
+  user:
+    $ref: ./User.yaml
 required:
   - id
   - eventPriority

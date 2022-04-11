@@ -1,5 +1,7 @@
 title: Group
 type: object
+x-tags:
+  - persons
 description: A collection of students
 properties:
   id:
@@ -14,6 +16,8 @@ properties:
     type: array
     items:
       $ref: ./User.yaml
+  university:
+    $ref: ./Universiry.yaml
 required:
   - id
   - speciality

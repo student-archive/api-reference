@@ -1,5 +1,7 @@
 title: InviteCode
 type: object
+x-tags:
+  - persons
 description: Unique one-time code to add new users
 properties:
   id:

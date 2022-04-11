@@ -1,0 +1,11 @@
+title: QuizHistory
+type: object
+properties:
+  id:
+    type: string
+  question:
+    $ref: ./Question.yaml
+  selectedVarinat:
+    $ref: ./QuizVariant.yaml
+  user:
+    $ref: ./User.yaml

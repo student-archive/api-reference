@@ -1,0 +1,10 @@
+title: Universiry
+type: object
+x-tags:
+  - persons
+description: Name of University
+properties:
+  id:
+    type: string
+  universityName:
+    type: string
