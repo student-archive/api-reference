@@ -13,3 +13,11 @@ properties:
     type: array
     items:
       $ref: ./Question.yaml
+  quizName:
+    type: string
+  quizDescription:
+    type: string
+  questionsAmount:
+    type: integer
+  amoutOfQuestion:
+    type: integer

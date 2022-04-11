@@ -10,6 +10,8 @@ properties:
     $ref: ./Speciality.yaml
   groupNumber:
     type: string
+  university:
+    $ref: ./Universiry.yaml
 required:
   - speciality
   - groupNumber

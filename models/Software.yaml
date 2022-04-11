@@ -10,3 +10,5 @@ properties:
     $ref: ./Subject.yaml
   link:
     type: string
+  description:
+    type: string

@@ -12,7 +12,19 @@ properties:
     $ref: ./Group.yaml
   role:
     $ref: ./Role.yaml
+  sex:
+    $ref: ./Sex.yaml
   firstName:
     type: string
   lastName:
     type: string
+  avatarLink:
+    type: string
+required:
+  - id
+  - account
+  - group
+  - role
+  - sex
+  - firstName
+  - lastName

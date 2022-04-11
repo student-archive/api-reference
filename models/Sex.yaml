@@ -1,0 +1,10 @@
+title: Sex
+type: object
+x-tags:
+  - persons
+properties:
+  id:
+    type: integer
+  sexName:
+    type: string
+description: Gender of students

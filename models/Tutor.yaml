@@ -22,3 +22,5 @@ properties:
     type: array
     items:
       $ref: ./Subject.yaml
+  isWorking:
+    type: boolean

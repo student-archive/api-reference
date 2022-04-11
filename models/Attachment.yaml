@@ -7,8 +7,12 @@ properties:
   id:
     type: string
   type:
-    type: string
+    $ref: ./AttachmentType.yaml
   link:
+    type: string
+  author:
+    type: string
+  checksum:
     type: string
 required:
   - id

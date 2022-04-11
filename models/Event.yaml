@@ -16,6 +16,8 @@ properties:
     type: string
   eventDate:
     type: integer
+  user:
+    $ref: ./User.yaml
 required:
   - id
   - eventPriority

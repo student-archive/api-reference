@@ -6,8 +6,8 @@ description: Unique one-time code to add new users
 properties:
   id:
     type: string
-  user:
-    $ref: ./User.yaml
+  account:
+    $ref: ./Account.yaml
   inviteCode:
     type: string
   isValid:

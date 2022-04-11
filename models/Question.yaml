@@ -12,3 +12,7 @@ properties:
     type: array
     items:
       $ref: ./QuizVariant.yaml
+  correctAnswersAmount:
+    type: integer
+  totalAnswerAmount:
+    type: integer

@@ -1,0 +1,13 @@
+title: QuizResult
+type: object
+properties:
+  id:
+    type: string
+  quiz:
+    $ref: ./Quiz.yaml
+  user:
+    $ref: ./User.yaml
+  result:
+    type: integer
+  quizSubmitDate:
+    type: integer
