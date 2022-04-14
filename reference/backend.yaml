@@ -2512,5 +2512,162 @@ paths:
         Access level: Captains+
       security:
         - Authorization: []
+  /employeePositions:
+    get:
+      summary: Get all available positions
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/EmployeePosition.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-employeePositions
+      description: ''
+      security:
+        - Authorization: []
+    post:
+      summary: Create new position
+      tags:
+        - persons
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/EmployeePosition.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: post-employeePositions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/EmployeePosition.yaml
+  '/employeePosition/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get an exact employee position
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/EmployeePosition.yaml
+      operationId: get-employeePosition-id
+      security:
+        - Authorization: []
+    patch:
+      summary: Update an employee position
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: patch-employeePosition-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/EmployeePosition.yaml
+    delete:
+      summary: Delete an employee position
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+      operationId: delete-employeePosition-id
+  '/employee/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get exact employee
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+      operationId: get-employee-id
+    put:
+      summary: Put data to linked tables to employee
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+      operationId: put-employee-id
+    patch:
+      summary: Update employee
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+      operationId: patch-employee-id
+    delete:
+      summary: Delete employee
+      tags:
+        - persons
+      responses:
+        '200':
+          description: OK
+      operationId: delete-employee-id
 security:
   - Authorization: []
