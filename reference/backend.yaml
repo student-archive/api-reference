@@ -296,7 +296,7 @@ paths:
         Generates new invite code and returns it
         Access level: Captains+
       parameters: []
-  '/events/{group}':
+  '/events/byGroup/{group}':
     get:
       summary: Get events
       tags:
