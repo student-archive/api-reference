@@ -2415,5 +2415,102 @@ paths:
                 $ref: ../models/Error.yaml
       operationId: put-tutors-subjectId-teacherId
       description: Adds existing tutor to subject
+  '/page/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: get page by id
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Page.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      operationId: get-page-id
+      description: |-
+        Gets exact page by id
+        Access level: any user
+      security:
+        - Authorization: []
+    patch:
+      summary: Update page by ID
+      operationId: patch-page-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Page.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Error.yaml
+      description: |-
+        Updates page by id
+        Access level: Captains+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Page.yaml
+        description: ''
+      security:
+        - Authorization: []
+    delete:
+      summary: delete page permanently
+      operationId: delete-page-id
+      responses:
+        '200':
+          description: OK
+      description: |-
+        Deletes page
+        Access level: Captains+
+      security:
+        - Authorization: []
 security:
   - Authorization: []
