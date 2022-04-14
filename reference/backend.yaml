@@ -2424,7 +2424,8 @@ paths:
         required: true
     get:
       summary: get page by id
-      tags: []
+      tags:
+        - content
       responses:
         '200':
           description: OK
@@ -2515,8 +2516,6 @@ paths:
   /employeePositions:
     get:
       summary: Get all available positions
-      tags:
-        - persons
       responses:
         '200':
           description: OK
@@ -2548,6 +2547,8 @@ paths:
       description: ''
       security:
         - Authorization: []
+      tags:
+        - content
     post:
       summary: Create new position
       tags:
@@ -2624,12 +2625,12 @@ paths:
               $ref: ../models/EmployeePosition.yaml
     delete:
       summary: Delete an employee position
-      tags:
-        - persons
       responses:
         '200':
           description: OK
       operationId: delete-employeePosition-id
+      tags:
+        - content
   '/employee/{id}':
     parameters:
       - schema:
@@ -2639,12 +2640,12 @@ paths:
         required: true
     get:
       summary: Get exact employee
-      tags:
-        - persons
       responses:
         '200':
           description: OK
       operationId: get-employee-id
+      tags:
+        - content
     put:
       summary: Put data to linked tables to employee
       tags:
